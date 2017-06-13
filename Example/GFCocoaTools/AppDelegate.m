@@ -2,11 +2,12 @@
 //  AppDelegate.m
 //  GFCocoaTools
 //
-//  Created by guofengld@gmail.com on 05/10/2017.
-//  Copyright (c) 2017 guofengld@gmail.com. All rights reserved.
+//  Created by guofengld on 05/10/2017.
+//  Copyright (c) 2017 guofengld@github.com. All rights reserved.
 //
 
 #import "AppDelegate.h"
+#import <GFCocoaTools/GFCocoaTools.h>
 
 @implementation AppDelegate
 

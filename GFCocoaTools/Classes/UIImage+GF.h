@@ -2,8 +2,8 @@
 //  UIImage.h
 //  YuCloud
 //
-//  Created by 熊国锋 on 16/2/3.
-//  Copyright © 2016年 VIROYAL-ELEC. All rights reserved.
+//  Created by guofengld on 16/2/3.
+//  Copyright © 2016年 guofengld@gmail.com. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

@@ -2,8 +2,8 @@
 //  YuCloud+GF.m
 //  YuCloud
 //
-//  Created by 熊国锋 on 2016/11/19.
-//  Copyright © 2016年 VIROYAL-ELEC. All rights reserved.
+//  Created by guofengld on 2016/11/19.
+//  Copyright © 2016年 guofengld@gmail.com. All rights reserved.
 //
 
 #import "NSDateFormatter+GF.h"

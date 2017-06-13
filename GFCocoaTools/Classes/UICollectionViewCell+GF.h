@@ -2,8 +2,8 @@
 //  UICollectionViewCell+GF.h
 //  YuCloud
 //
-//  Created by 熊国锋 on 2016/12/8.
-//  Copyright © 2016年 VIROYAL-ELEC. All rights reserved.
+//  Created by guofengld on 2016/12/8.
+//  Copyright © 2016年 guofengld@gmail.com. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

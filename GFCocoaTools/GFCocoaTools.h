@@ -2,7 +2,7 @@
 //  GFCocoaTools.h
 //  Pods
 //
-//  Created by 熊国锋 on 2017/6/13.
+//  Created by guofengld on 2017/6/13.
 //
 //
 

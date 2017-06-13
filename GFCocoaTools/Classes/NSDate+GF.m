@@ -2,8 +2,8 @@
 //  NSDate+GF.m
 //  Dreamedu
 //
-//  Created by 熊国锋 on 2017/3/14.
-//  Copyright © 2017年 南京远御网络科技有限公司. All rights reserved.
+//  Created by guofengld on 2017/3/14.
+//  Copyright © 2017年 guofengld@gmail.com. All rights reserved.
 //
 
 #import "NSDate+GF.h"

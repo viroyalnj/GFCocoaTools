@@ -30,13 +30,11 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = '8.1'
 
-  s.source_files = 'GFCocoaTools/Classes/**/*'
+  s.source_files = 'GFCocoaTools/GFCocoaTools.h'
+  s.dependency 'SSZipArchive'
   
-  # s.resource_bundles = {
-  #   'GFCocoaTools' => ['GFCocoaTools/Assets/*.png']
-  # }
+  s.subspec 'Classes' do |ss|
+    ss.source_files = 'GFCocoaTools/Classes/*.{h,m}'
+  end
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
 end
