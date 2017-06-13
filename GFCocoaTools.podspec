@@ -26,7 +26,7 @@ Pod::Spec.new do |s|
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'guofengld' => 'guofengld@gmail.com' }
   s.source           = { :git => 'https://github.com/guofengld/GFCocoaTools.git', :tag => s.version.to_s }
-  s.social_media_url = 'https://twitter.com/guofengjd'
+# s.social_media_url = 'https://twitter.com/guofengjd'
 
   s.ios.deployment_target = '8.1'
 
