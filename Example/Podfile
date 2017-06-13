@@ -1,8 +1,9 @@
-use_frameworks!
+platform :ios, '8.0'
+inhibit_all_warnings!
 
 target 'GFCocoaTools_Example' do
   pod 'GFCocoaTools', :path => '../'
-
+  
   target 'GFCocoaTools_Tests' do
     inherit! :search_paths
 

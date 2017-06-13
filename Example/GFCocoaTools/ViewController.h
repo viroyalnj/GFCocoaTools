@@ -1,5 +1,5 @@
 //
-//  GFViewController.h
+//  ViewController.h
 //  GFCocoaTools
 //
 //  Created by guofengld@gmail.com on 05/10/2017.
@@ -8,6 +8,6 @@
 
 @import UIKit;
 
-@interface GFViewController : UIViewController
+@interface ViewController : UIViewController
 
 @end

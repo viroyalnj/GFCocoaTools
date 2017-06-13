@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'GFCocoaTools'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of GFCocoaTools.'
+  s.summary          = '自己使用的一个工具类.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,17 +18,17 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+平时使用的一些工具类，为了方便，使用pod 打包起来，方便跨项目使用
                        DESC
 
-  s.homepage         = 'https://github.com/guofengld@gmail.com/GFCocoaTools'
+  s.homepage         = 'https://github.com/guofengld/GFCocoaTools'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'guofengld@gmail.com' => 'xgf_nj@viroyal-elec.com' }
-  s.source           = { :git => 'https://github.com/guofengld@gmail.com/GFCocoaTools.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.author           = { 'guofengld' => 'guofengld@gmail.com' }
+  s.source           = { :git => 'https://github.com/guofengld/GFCocoaTools.git', :tag => s.version.to_s }
+  s.social_media_url = 'https://twitter.com/guofengjd'
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '8.1'
 
   s.source_files = 'GFCocoaTools/Classes/**/*'
   

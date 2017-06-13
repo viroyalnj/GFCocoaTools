@@ -1,14 +1,14 @@
 //
-//  GFAppDelegate.m
+//  AppDelegate.m
 //  GFCocoaTools
 //
 //  Created by guofengld@gmail.com on 05/10/2017.
 //  Copyright (c) 2017 guofengld@gmail.com. All rights reserved.
 //
 
-#import "GFAppDelegate.h"
+#import "AppDelegate.h"
 
-@implementation GFAppDelegate
+@implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

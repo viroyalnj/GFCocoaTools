@@ -1,5 +1,5 @@
 //
-//  GFAppDelegate.h
+//  AppDelegate.h
 //  GFCocoaTools
 //
 //  Created by guofengld@gmail.com on 05/10/2017.
@@ -8,7 +8,7 @@
 
 @import UIKit;
 
-@interface GFAppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
