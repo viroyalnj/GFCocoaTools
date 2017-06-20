@@ -8,7 +8,7 @@
 
 #import "NSBundle+GF.h"
 
-@implementation UIImage (GF)
+@implementation UIImage (Bundle)
 
 + (UIImage *)bundleImageNamed:(NSString *)name {
     NSBundle *bundle = [NSBundle photoBrowserBundle];

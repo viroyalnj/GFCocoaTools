@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIImage (GF)
+@interface UIImage (Bundle)
 
 + (UIImage *)bundleImageNamed:(NSString *)name;
 
