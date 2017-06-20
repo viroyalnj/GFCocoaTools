@@ -1,9 +1,9 @@
 //
-//  YuCloud+GF.m
-//  YuCloud
+//  NSDateFormatter+GF.m
+//  GFCocoaTools
 //
-//  Created by guofengld on 2016/11/19.
-//  Copyright © 2016年 guofengld@gmail.com. All rights reserved.
+//  Created by guofengld on 2017/3/14.
+//  Copyright © 2017年 guofengld@gmail.com. All rights reserved.
 //
 
 #import "NSDateFormatter+GF.h"

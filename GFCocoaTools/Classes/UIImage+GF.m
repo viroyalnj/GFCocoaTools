@@ -1,9 +1,9 @@
 //
-//  UIImage.m
-//  YuCloud
+//  UIImage+GF.m
+//  GFCocoaTools
 //
-//  Created by guofengld on 16/2/3.
-//  Copyright © 2016年 guofengld@gmail.com. All rights reserved.
+//  Created by guofengld on 2017/3/14.
+//  Copyright © 2017年 guofengld@gmail.com. All rights reserved.
 //
 
 #import "UIImage+GF.h"

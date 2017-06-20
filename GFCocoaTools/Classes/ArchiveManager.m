@@ -1,9 +1,9 @@
 //
 //  ArchiveManager.m
-//  YuCloud
+//  GFCocoaTools
 //
-//  Created by 熊国锋 on 2016/10/26.
-//  Copyright © 2016年 VIROYAL-ELEC. All rights reserved.
+//  Created by guofengld on 2017/3/14.
+//  Copyright © 2017年 guofengld@gmail.com. All rights reserved.
 //
 
 #import "ArchiveManager.h"
@@ -39,7 +39,7 @@
       complection:(void (^)(BOOL, NSString * _Nonnull))complection {
     
     NSString *destination = dest;
-    if ([destination length] == 0) {
+    if (!destination) {
         NSURL *cacheURL = [[[NSFileManager defaultManager] URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask] lastObject];
         destination = cacheURL.path;
     }

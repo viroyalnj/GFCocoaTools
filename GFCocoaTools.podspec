@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'GFCocoaTools'
-  s.version          = '0.1.1'
+  s.version          = '0.1.2'
   s.summary          = '自己使用的一个工具类.'
 
 # This description is used to generate tags and improve search results.
@@ -32,7 +32,12 @@ Pod::Spec.new do |s|
 
   s.source_files = 'GFCocoaTools/GFCocoaTools.h'
   s.dependency 'SSZipArchive'
-  
+  s.dependency 'MBProgressHUD'
+
+  s.resource_bundles = {
+    'GFCocoaTools' => ['GFCocoaTools/Assets/*.png', 'GFCocoaTools/Assets/*.lproj']
+  }
+
   s.subspec 'Classes' do |ss|
     ss.source_files = 'GFCocoaTools/Classes/*.{h,m}'
   end

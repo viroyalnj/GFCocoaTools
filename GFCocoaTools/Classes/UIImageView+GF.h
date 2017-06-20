@@ -1,9 +1,9 @@
 //
 //  UIImageView+GF.h
-//  YuCloud
+//  GFCocoaTools
 //
-//  Created by guofengld on 16/3/8.
-//  Copyright © 2016年 guofengld@gmail.com. All rights reserved.
+//  Created by guofengld on 2017/3/14.
+//  Copyright © 2017年 guofengld@gmail.com. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

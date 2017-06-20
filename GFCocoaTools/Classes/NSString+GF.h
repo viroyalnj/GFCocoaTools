@@ -1,9 +1,9 @@
 //
 //  NSString+GF.h
-//  YuCloud
+//  GFCocoaTools
 //
-//  Created by guofengld on 2016/10/11.
-//  Copyright © 2016年 guofengld@gmail.com. All rights reserved.
+//  Created by guofengld on 2017/3/14.
+//  Copyright © 2017年 guofengld@gmail.com. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -13,5 +13,9 @@
 - (NSString *)stringByLeftTrimmingCharactersInSet:(NSCharacterSet *)set;
 
 - (NSString *)stringByRightTrimmingCharactersInSet:(NSCharacterSet *)set;
+
+- (NSString *)phoneNumberStyledString;
+
+- (NSString *)MD5;
 
 @end

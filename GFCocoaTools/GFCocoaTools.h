@@ -9,6 +9,18 @@
 #ifndef GFCocoaTools_h
 #define GFCocoaTools_h
 
+#import "ArchiveManager.h"
+#import "MBProgressHUD+GF.h"
+#import "NSAttributedString+GF.h"
+#import "NSBundle+GF.h"
 #import "NSDate+GF.h"
+#import "NSDateFormatter+GF.h"
+#import "NSString+GF.h"
+#import "UICollectionViewCell+GF.h"
+#import "UIImage+GF.h"
+#import "UIImageView+GF.h"
+#import "UIScreen+GF.h"
+#import "UITableViewCell+GF.h"
+
 
 #endif /* GFCocoaTools_h */

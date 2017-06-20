@@ -1,9 +1,9 @@
 //
 //  YuArchiveManager.h
-//  YuCloud
+//  GFCocoaTools
 //
-//  Created by 熊国锋 on 2016/10/26.
-//  Copyright © 2016年 VIROYAL-ELEC. All rights reserved.
+//  Created by guofengld on 2017/3/14.
+//  Copyright © 2017年 guofengld@gmail.com. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
