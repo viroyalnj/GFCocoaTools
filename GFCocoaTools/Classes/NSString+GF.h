@@ -18,4 +18,6 @@
 
 - (NSString *)MD5;
 
+- (BOOL)isValidPhoneNumber;
+
 @end
