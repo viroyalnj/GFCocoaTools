@@ -21,6 +21,7 @@
 #import "UIImageView+GF.h"
 #import "UIScreen+GF.h"
 #import "UITableViewCell+GF.h"
+#import "NSData+GF.h"
 
 
 #endif /* GFCocoaTools_h */
