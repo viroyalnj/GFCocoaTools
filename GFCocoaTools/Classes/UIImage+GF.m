@@ -159,6 +159,15 @@ typedef enum {
     return imageCopy;
 }
 
+- (UIImage *)croppedImage:(CGRect)bounds {
+    CGFloat scale = MAX(self.scale, 1.0f);
+    CGRect scaledBounds = CGRectMake(bounds.origin.x * scale, bounds.origin.y * scale, bounds.size.width * scale, bounds.size.height * scale);
+    CGImageRef imageRef = CGImageCreateWithImageInRect([self CGImage], scaledBounds);
+    UIImage *croppedImage = [UIImage imageWithCGImage:imageRef scale:self.scale orientation:UIImageOrientationUp];
+    CGImageRelease(imageRef);
+    return croppedImage;
+}
+
 static inline double radians (double degrees) {return degrees * M_PI/180;}
 - (UIImage *)imageRotated:(UIImageOrientation)orientation {
     UIGraphicsBeginImageContext(self.size);
@@ -202,8 +211,27 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
     return image;
 }
 
-
-
+- (UIImage *)imageWithAlpha:(CGFloat)alpha {
+    UIGraphicsBeginImageContextWithOptions(self.size, NO, 0.0f);
+    
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    CGRect area = CGRectMake(0, 0, self.size.width, self.size.height);
+    
+    CGContextScaleCTM(ctx, 1, -1);
+    CGContextTranslateCTM(ctx, 0, -area.size.height);
+    
+    CGContextSetBlendMode(ctx, kCGBlendModeMultiply);
+    
+    CGContextSetAlpha(ctx, alpha);
+    
+    CGContextDrawImage(ctx, area, self.CGImage);
+    
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    
+    return newImage;
+}
 
 @end
 

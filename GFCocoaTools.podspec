@@ -33,6 +33,7 @@ Pod::Spec.new do |s|
   s.source_files = 'GFCocoaTools/GFCocoaTools.h'
   s.dependency 'SSZipArchive'
   s.dependency 'MBProgressHUD'
+  s.dependency 'SDWebImage'
 
   s.resource_bundles = {
     'GFCocoaTools' => ['GFCocoaTools/Assets/*.png', 'GFCocoaTools/Assets/*.lproj']

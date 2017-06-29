@@ -25,10 +25,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (UIImage *)imageResized:(CGFloat)resolution;
 
+- (UIImage *)croppedImage:(CGRect)bounds;
+
 - (UIImage *)imageRotated:(UIImageOrientation)orientation;
 
 - (UIImage *)imageWithCornerRadius:(CGFloat)cornerRadius
                              scale:(CGFloat)scale;
+
+- (UIImage *)imageWithAlpha:(CGFloat)alpha;
 
 @end
 
