@@ -13,14 +13,15 @@
 
 @implementation UIImageView (GF)
 
-- (void)setImage:(UIImage *)image fade:(BOOL)fade
-{
+- (void)setImage:(UIImage *)image fade:(BOOL)fade {
     if (self.image != image) {
-        [UIView transitionWithView:self duration:0.5
+        [UIView transitionWithView:self
+                          duration:0.5
                            options:UIViewAnimationOptionTransitionCrossDissolve
                         animations:^{
                             self.image = image;
-                        } completion:nil];
+                        }
+                        completion:nil];
     }
     else {
         self.image = image;
@@ -66,7 +67,6 @@
                                                               if (block) {
                                                                   block(roundedImage);
                                                               }
-                                                              
                                                           }
                                                           else {
                                                               self.image = squaredImage;
