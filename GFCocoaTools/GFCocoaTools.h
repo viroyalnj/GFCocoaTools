@@ -23,6 +23,7 @@
 #import "UITableViewCell+GF.h"
 #import "NSData+GF.h"
 #import "UIView+GF.h"
+#import "NSDateFormatter+GF.h"
 
 
 #endif /* GFCocoaTools_h */
