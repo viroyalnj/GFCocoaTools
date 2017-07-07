@@ -16,11 +16,11 @@
 
 @interface NSBundle (GF)
 
-+ (instancetype)photoBrowserBundle;
++ (instancetype)cocoaToolsBundle;
 
-- (NSString *)photoBrowserStringForKey:(NSString *)key value:(NSString *)value table:(NSString *)tableName;
+- (NSString *)cocoaToolsStringForKey:(NSString *)key value:(NSString *)value table:(NSString *)tableName;
 
 @end
 
 #define GFLocalizedString(key, comment) \
-    [[NSBundle photoBrowserBundle] photoBrowserStringForKey:(key) value:(key) table:@"Localizable"]
+    [[NSBundle cocoaToolsBundle] cocoaToolsStringForKey:(key) value:(key) table:@"Localizable"]

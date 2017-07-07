@@ -11,7 +11,7 @@
 @implementation UIImage (Bundle)
 
 + (UIImage *)bundleImageNamed:(NSString *)name {
-    NSBundle *bundle = [NSBundle photoBrowserBundle];
+    NSBundle *bundle = [NSBundle cocoaToolsBundle];
     
     NSString *string = [NSString stringWithFormat:@"@%.0fx", [UIScreen mainScreen].scale];
     NSArray *end = @[string, @"@3x", @"@2x"];
@@ -34,7 +34,7 @@
 
 @implementation NSBundle (GF)
 
-+ (instancetype)photoBrowserBundle {
++ (instancetype)cocoaToolsBundle {
     static dispatch_once_t onceToken;
     static NSBundle *bundle;
     dispatch_once(&onceToken, ^{
@@ -45,11 +45,11 @@
     return bundle;
 }
 
-- (instancetype)localizedStringBundle {
+- (instancetype)cocoaToolsStringBundle {
     static dispatch_once_t onceToken;
     static NSBundle *stringBundle;
     dispatch_once(&onceToken, ^{
-        NSBundle *bundle = [NSBundle photoBrowserBundle];
+        NSBundle *bundle = [NSBundle cocoaToolsBundle];
         NSString *resource;
         NSString *local = [[NSLocale preferredLanguages] firstObject];
         if ([local containsString:@"zh"]) {
@@ -70,8 +70,8 @@
     return stringBundle;
 }
 
-- (NSString *)photoBrowserStringForKey:(NSString *)key value:(NSString *)value table:(NSString *)tableName {
-    return [[self localizedStringBundle] localizedStringForKey:key value:value table:tableName];
+- (NSString *)cocoaToolsStringForKey:(NSString *)key value:(NSString *)value table:(NSString *)tableName {
+    return [[self cocoaToolsStringBundle] localizedStringForKey:key value:value table:tableName];
 }
 
 @end

@@ -15,7 +15,8 @@
                         mode:(MBProgressHUDMode)mode
                        image:(UIImage *)image
                      message:(NSString *)message
-                   delayHide:(BOOL)delayHide {
+                   delayHide:(BOOL)delayHide
+                  completion:(void (^)())completionBlock {
     
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
     if (image) {
@@ -30,6 +31,34 @@
     if (delayHide) {
         [hud hideAnimated:YES afterDelay:PROGRESS_DELAY_HIDE];
     }
+    
+    hud.completionBlock = completionBlock;
+    
+    return hud;
+}
+
++ (MBProgressHUD *)showFinishHudOn:(UIView *)view
+                        withResult:(BOOL)success
+                         labelText:(NSString *)labelText
+                         delayHide:(BOOL)delayHide
+                        completion:(void (^)())completionBlock {
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
+    
+    UIImage *image = success?[UIImage bundleImageNamed:@"ic_hud_success"]:[UIImage bundleImageNamed:@"ic_hud_fail"];
+    [hud setMode:MBProgressHUDModeCustomView];
+    [hud setCustomView:[[UIImageView alloc] initWithImage:image]];
+    
+    NSString *message = labelText;
+    if (!message) {
+        message = success?GFLocalizedString(@"Success", nil):GFLocalizedString(@"Fail", nil);
+    }
+    hud.label.text = message;
+    
+    if (delayHide) {
+        [hud hideAnimated:YES afterDelay:PROGRESS_DELAY_HIDE];
+    }
+    
+    hud.completionBlock = completionBlock;
     
     return hud;
 }

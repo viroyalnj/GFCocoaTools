@@ -18,7 +18,14 @@ NS_ASSUME_NONNULL_BEGIN
                         mode:(MBProgressHUDMode)mode
                        image:(nullable UIImage *)image
                      message:(nullable NSString *)message
-                   delayHide:(BOOL)delayHide;
+                   delayHide:(BOOL)delayHide
+                  completion:(nullable void (^)())completionBlock;
+
++ (MBProgressHUD *)showFinishHudOn:(UIView *)view
+                        withResult:(BOOL)success
+                         labelText:(nullable NSString *)labelText
+                         delayHide:(BOOL)delayHide
+                        completion:(nullable void (^)())completionBlock;
 
 + (void)finishHudWithResult:(BOOL)success
                         hud:(MBProgressHUD *)hud
