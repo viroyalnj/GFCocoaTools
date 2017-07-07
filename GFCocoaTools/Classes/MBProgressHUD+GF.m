@@ -50,7 +50,7 @@
     
     NSString *message = labelText;
     if (!message) {
-        message = success?GFLocalizedString(@"Success", nil):GFLocalizedString(@"Fail", nil);
+        message = success?GFLocalizedString(@"Success", nil):GFLocalizedString(@"Failed", nil);
     }
     hud.label.text = message;
     
