@@ -27,7 +27,26 @@
 }
 
 - (NSString *)stringByRightTrimmingCharactersInSet:(NSCharacterSet *)set {
-    return self;
+    NSString *string = self;
+    NSInteger len = [string length];
+    while (len > 0) {
+        unichar uchar = [string characterAtIndex:len - 1];
+        if ([set characterIsMember:uchar]) {
+            if (len > 1) {
+                string = [string substringToIndex:len - 2];
+                len = [string length];
+            }
+            else {
+                string = @"";
+                break;
+            }
+        }
+        else {
+            break;
+        }
+    }
+    
+    return string;
 }
 
 
