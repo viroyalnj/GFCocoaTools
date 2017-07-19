@@ -28,6 +28,10 @@
     return [self components].day;
 }
 
+- (NSInteger)week {
+    return [self components].weekOfYear;
+}
+
 - (NSInteger)hour {
     return [self components].hour;
 }

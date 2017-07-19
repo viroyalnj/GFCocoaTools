@@ -13,6 +13,7 @@
 - (NSInteger)year;
 - (NSInteger)month;
 - (NSInteger)day;
+- (NSInteger)week;
 
 - (NSInteger)hour;
 - (NSInteger)minute;
