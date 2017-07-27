@@ -34,6 +34,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (UIImage *)imageWithAlpha:(CGFloat)alpha;
 
+- (UIColor *)averageColorWithAlpha:(CGFloat)alpha;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -7,6 +7,7 @@
 //
 
 #import "UIImage+GF.h"
+#import "UIColor+GF.h"
 
 @implementation UIImage (GF)
 
@@ -231,6 +232,43 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
     UIGraphicsEndImageContext();
     
     return newImage;
+}
+
+- (UIColor *)averageColorWithAlpha:(CGFloat)alpha {
+    
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    unsigned char rgba[4];
+    CGContextRef context = CGBitmapContextCreate(rgba, 1, 1, 8, 4, colorSpace, kCGImageAlphaPremultipliedLast | kCGBitmapByteOrder32Big);
+    
+    //Draw our image down to 1x1 pixels
+    CGContextDrawImage(context, CGRectMake(0, 0, 1, 1), self.CGImage);
+    CGColorSpaceRelease(colorSpace);
+    CGContextRelease(context);
+    
+    //Check if image alpha is 0
+    if (rgba[3] == 0) {
+        
+        CGFloat imageAlpha = ((CGFloat)rgba[3])/255.0;
+        CGFloat multiplier = imageAlpha/255.0;
+        
+        UIColor *averageColor = [UIColor colorWithRed:((CGFloat)rgba[0])*multiplier green:((CGFloat)rgba[1])*multiplier blue:((CGFloat)rgba[2])*multiplier alpha:imageAlpha];
+        
+        //Improve color
+        averageColor = [averageColor colorWithMinimumSaturation:0.15];
+        
+        //Return average color
+        return averageColor;
+    }
+    else {
+        //Get average
+        UIColor *averageColor = [UIColor colorWithRed:((CGFloat)rgba[0])/255.0 green:((CGFloat)rgba[1])/255.0 blue:((CGFloat)rgba[2])/255.0 alpha:alpha];
+        
+        //Improve color
+        averageColor = [averageColor colorWithMinimumSaturation:0.15];
+        
+        //Return average color
+        return averageColor;
+    }
 }
 
 @end

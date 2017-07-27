@@ -11,7 +11,9 @@
 
 @implementation UIButton (GF)
 
-+ (instancetype)buttonWithTitleColor:(UIColor *)titleColor backgroundColor:(UIColor *)backgroundColor cornerRadii:(CGSize)cornerRadii {
++ (instancetype)buttonWithTitleColor:(UIColor *)titleColor
+                     backgroundColor:(UIColor *)backgroundColor
+                         cornerRadii:(CGSize)cornerRadii {
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     [btn setTitleColor:titleColor forState:UIControlStateNormal];
     

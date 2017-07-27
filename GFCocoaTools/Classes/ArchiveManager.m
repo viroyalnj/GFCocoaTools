@@ -40,8 +40,7 @@
     
     NSString *destination = dest;
     if (!destination) {
-        NSURL *cacheURL = [[[NSFileManager defaultManager] URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask] lastObject];
-        destination = cacheURL.path;
+        destination = [[NSFileManager defaultManager] currentDirectoryPath];
     }
     
     [SSZipArchive unzipFileAtPath:path
