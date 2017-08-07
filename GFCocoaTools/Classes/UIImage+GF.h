@@ -36,6 +36,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (UIColor *)averageColorWithAlpha:(CGFloat)alpha;
 
+- (nullable NSString *)QR;
+
 @end
 
 NS_ASSUME_NONNULL_END

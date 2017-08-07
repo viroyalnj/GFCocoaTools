@@ -271,5 +271,50 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
     }
 }
 
+- (NSString *)QR {
+    CIDetector *dector = [CIDetector detectorOfType:CIDetectorTypeQRCode
+                                            context:nil
+                                            options:@{CIDetectorAccuracy : CIDetectorAccuracyHigh}];
+    
+    int exifOrientation;
+    switch (self.imageOrientation) {
+        case UIImageOrientationUp:
+            exifOrientation = 1;
+            break;
+        case UIImageOrientationDown:
+            exifOrientation = 3;
+            break;
+        case UIImageOrientationLeft:
+            exifOrientation = 8;
+            break;
+        case UIImageOrientationRight:
+            exifOrientation = 6;
+            break;
+        case UIImageOrientationUpMirrored:
+            exifOrientation = 2;
+            break;
+        case UIImageOrientationDownMirrored:
+            exifOrientation = 4;
+            break;
+        case UIImageOrientationLeftMirrored:
+            exifOrientation = 5;
+            break;
+        case UIImageOrientationRightMirrored:
+            exifOrientation = 7;
+            break;
+        default:
+            break;
+    }
+    
+    CIImage *cimage = [CIImage imageWithCGImage:self.CGImage];
+    CIFeature *feature = [dector featuresInImage:cimage options:@{CIDetectorImageOrientation:[NSNumber numberWithInt:exifOrientation]}].firstObject;
+    if ([feature isKindOfClass:[CIQRCodeFeature class]]) {
+        CIQRCodeFeature *qr = (CIQRCodeFeature *)feature;
+        return qr.messageString;
+    }
+    
+    return nil;
+}
+
 @end
 
