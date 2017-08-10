@@ -7,7 +7,6 @@
 //
 
 #import "NSString+GF.h"
-#import <CommonCrypto/CommonDigest.h>
 
 @implementation NSString (GF)
 
