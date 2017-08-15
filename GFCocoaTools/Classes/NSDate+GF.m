@@ -56,4 +56,9 @@
     return [self sameMonthTo:date] && self.day == date.day;
 }
 
+- (long)secondsSince1970 {
+    long seconds = self.timeIntervalSince1970;
+    return seconds;
+}
+
 @end

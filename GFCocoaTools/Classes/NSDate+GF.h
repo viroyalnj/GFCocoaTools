@@ -23,4 +23,6 @@
 - (BOOL)sameMonthTo:(NSDate *)date;
 - (BOOL)sameDayTo:(NSDate *)date;
 
+- (long)secondsSince1970;
+
 @end
