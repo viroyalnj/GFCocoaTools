@@ -10,6 +10,9 @@
 
 @interface NSDate (GF)
 
++ (NSDate *)dateWithYear:(NSInteger)year month:(NSInteger)month day:(NSInteger)day
+                    hour:(NSInteger)hour minute:(NSInteger)minute second:(NSInteger)second;
+
 - (NSInteger)year;
 - (NSInteger)month;
 - (NSInteger)day;
@@ -24,5 +27,4 @@
 - (BOOL)sameDayTo:(NSDate *)date;
 
 - (long)secondsSince1970;
-
 @end

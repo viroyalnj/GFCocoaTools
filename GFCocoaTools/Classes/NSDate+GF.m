@@ -10,6 +10,22 @@
 
 @implementation NSDate (GF)
 
++ (NSDate *)dateWithYear:(NSInteger)year month:(NSInteger)month day:(NSInteger)day
+                    hour:(NSInteger)hour minute:(NSInteger)minute second:(NSInteger)second {
+    NSCalendar *calendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierISO8601];
+    NSCalendarUnit unit = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
+    
+    NSDateComponents *components = [calendar components:unit fromDate:[NSDate date]];
+    components.year     = year;
+    components.month    = month;
+    components.day      = day;
+    components.hour     = hour;
+    components.minute   = minute;
+    components.second   = second;
+    
+    return [calendar dateFromComponents:components];
+}
+
 - (NSDateComponents *)components {
     NSCalendar *calendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierISO8601];
     NSCalendarUnit unit = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
