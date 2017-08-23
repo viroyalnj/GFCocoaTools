@@ -10,6 +10,42 @@
 
 @implementation UIColor (GF)
 
++ (instancetype)colorFromHex:(long long)hex {
+    return [UIColor colorWithRed:((double)((hex & 0xFF0000) >> 16))/255.0 green:((float)((hex & 0xFF00) >> 8))/255.0 blue:((float)((hex & 0xFF) >> 0))/255.0 alpha:1];
+}
+
++ (instancetype)colorAlphaFromHex:(long long)hex {
+    return [UIColor colorWithRed:((double)((hex & 0xFF000000) >> 24))/255.0 green:((float)((hex & 0xFF0000) >> 16))/255.0 blue:((float)((hex & 0xFF00) >> 8))/255.0 alpha:((float)(hex & 0xFF))/255.0];
+}
+
++ (instancetype)colorFromString:(NSString *)string {
+    long long value = 0;
+    sscanf([string cStringUsingEncoding:NSASCIIStringEncoding], "%llx", &value);
+    return [UIColor colorFromHex:value];
+}
+
++ (instancetype)colorAlphaFromString:(NSString *)string {
+    long long value = 0;
+    sscanf([string cStringUsingEncoding:NSASCIIStringEncoding], "%llx", &value);
+    
+    return [UIColor colorAlphaFromHex:value];
+}
+
+- (NSString *)hexStringWithAlpha:(BOOL)alpha {
+    CGFloat red, green, blue, a;
+    [self getRed:&red green:&green blue:&blue alpha:&a];
+    
+    NSString *string = @"0x";
+    string = [string stringByAppendingString:[NSString stringWithFormat:@"%02X", (unsigned long)(red * 255)]];
+    string = [string stringByAppendingString:[NSString stringWithFormat:@"%02X", (unsigned long)(green * 255)]];
+    string = [string stringByAppendingString:[NSString stringWithFormat:@"%02X", (unsigned long)(blue * 255)]];
+    if (alpha) {
+        string = [string stringByAppendingString:[NSString stringWithFormat:@"%02X", (unsigned long)(a * 255)]];
+    }
+    
+    return string;
+}
+
 - (UIColor *)colorWithMinimumSaturation:(CGFloat)saturation {
     if (!self)
         return nil;

@@ -25,6 +25,7 @@
 #import "UIView+GF.h"
 #import "NSDateFormatter+GF.h"
 #import "UIButton+GF.h"
+#import "UIColor+GF.h"
 
 
 #endif /* GFCocoaTools_h */

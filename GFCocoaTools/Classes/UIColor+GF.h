@@ -10,6 +10,14 @@
 
 @interface UIColor (GF)
 
++ (instancetype)colorFromHex:(long long)value;
++ (instancetype)colorAlphaFromHex:(long long)value;
+
++ (instancetype)colorFromString:(NSString *)string;
++ (instancetype)colorAlphaFromString:(NSString *)string;
+
+- (NSString *)hexStringWithAlpha:(BOOL)alpha;
+
 - (UIColor *)colorWithMinimumSaturation:(CGFloat)saturation;
 
 @end
