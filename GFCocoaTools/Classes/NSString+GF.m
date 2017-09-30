@@ -79,8 +79,19 @@
     return [MD5 uppercaseString];
 }
 
-- (BOOL)isValidPhoneNumber {
+- (BOOL)isValidMobileNumber {
     NSString *phoneRegex = @"^((13[0-9])|(14[0-9])|(15[^4,\\D])|(17[0-9])|(18[0,0-9])|(19[0-9]))\\d{8}$";
+    NSPredicate *phoneTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",phoneRegex];
+    
+    return [phoneTest evaluateWithObject:self];
+}
+
+- (BOOL)isValidPhoneNumber {
+    if ([self isValidMobileNumber]) {
+        return YES;
+    }
+    
+    NSString *phoneRegex = @"^[0-9]*$";
     NSPredicate *phoneTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",phoneRegex];
     
     return [phoneTest evaluateWithObject:self];

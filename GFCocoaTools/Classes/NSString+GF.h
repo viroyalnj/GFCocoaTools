@@ -21,4 +21,6 @@
 
 - (BOOL)isValidPhoneNumber;
 
+- (BOOL)isValidMobileNumber;
+
 @end
