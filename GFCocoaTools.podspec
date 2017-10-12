@@ -31,7 +31,6 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '8.1'
 
   s.source_files = 'GFCocoaTools/GFCocoaTools.h'
-  s.dependency 'SSZipArchive'
   s.dependency 'MBProgressHUD'
   s.dependency 'SDWebImage'
 
@@ -41,6 +40,10 @@ Pod::Spec.new do |s|
 
   s.subspec 'Classes' do |ss|
     ss.source_files = 'GFCocoaTools/Classes/*.{h,m}'
+  end
+
+  s.subspec 'SSZipArchive' do |ss|
+    ss.source_files = ['GFCocoaTools/SSZipArchive/*.{h,c,m}','GFCocoaTools/SSZipArchive/aes/*.{h,c,m}','GFCocoaTools/SSZipArchive/minizip/*.{h,c,m}']
   end
 
 end

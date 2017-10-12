@@ -7,7 +7,7 @@
 //
 
 #import "ArchiveManager.h"
-#import <SSZipArchive/SSZipArchive.h>
+#import "SSZipArchive.h"
 
 @interface ArchiveManager ()
 
