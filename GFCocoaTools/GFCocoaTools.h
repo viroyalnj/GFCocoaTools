@@ -28,6 +28,6 @@
 #import "UIColor+GF.h"
 #import "GFTableView.h"
 #import "GFCollectionView.h"
-
+#import "GFPinField.h"
 
 #endif /* GFCocoaTools_h */
