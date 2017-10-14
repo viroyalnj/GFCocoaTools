@@ -24,7 +24,7 @@
                       configuration:(void (^)(__kindof UICollectionViewCell *))configuration {
     BOOL hasCache = [self hasCacheForIndexPath:indexPath];
     if (hasCache) {
-        NSValue *value = [self heightCacheForIndexPath:indexPath];
+        NSValue *value = [self sizeCacheForIndexPath:indexPath];
         if ([value CGSizeValue].height > 0) {
             return [value CGSizeValue];
         }
@@ -130,10 +130,10 @@
 #pragma mark - cache methods
 
 - (BOOL)hasCacheForIndexPath:(NSIndexPath *)indexPath {
-    return [self heightCacheForIndexPath:indexPath] != nil;
+    return [self sizeCacheForIndexPath:indexPath] != nil;
 }
 
-- (NSValue *)heightCacheForIndexPath:(NSIndexPath *)indexPath {
+- (NSValue *)sizeCacheForIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section < [self.cache count]) {
         NSMutableArray *arr = self.cache[indexPath.section];
         if (indexPath.row < [arr count]) {
