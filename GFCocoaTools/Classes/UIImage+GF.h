@@ -38,6 +38,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (nullable NSString *)QR;
 
++ (UIImage *)imageWithColor:(UIColor *)color
+                       size:(CGSize)size
+          byRoundingCorners:(UIRectCorner)corners
+                cornerRadii:(CGSize)cornerRadii
+                      title:(NSString *)title
+                  titleFont:(UIFont *)titleFont
+                 titleColor:(UIColor *)titleColor;
+
 @end
 
 NS_ASSUME_NONNULL_END

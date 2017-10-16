@@ -316,5 +316,34 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
     return nil;
 }
 
++ (UIImage *)imageWithColor:(UIColor *)color
+                       size:(CGSize)size
+          byRoundingCorners:(UIRectCorner)corners
+                cornerRadii:(CGSize)cornerRadii
+                      title:(NSString *)title
+                  titleFont:(UIFont *)titleFont
+                 titleColor:(UIColor *)titleColor {
+    UIImage *image = [UIImage imageWithColor:color size:size];
+    
+    CGRect rect = CGRectMake(0, 0, size.width, size.height);
+    UIGraphicsBeginImageContextWithOptions(size, NO, 0);
+    
+    // Add a clip before drawing anything, in the shape of an rounded rect
+    [[UIBezierPath bezierPathWithRoundedRect:rect
+                           byRoundingCorners:corners
+                                 cornerRadii:cornerRadii] addClip];
+    
+    // Draw your image
+    [image drawInRect:rect];
+    
+    // Draw text
+    NSDictionary *attributes = @{NSFontAttributeName:titleFont, NSForegroundColorAttributeName:titleColor};
+    CGSize txtSize = [title sizeWithAttributes:attributes];
+    CGRect rectTxt = CGRectInset(rect, (CGRectGetWidth(rect) - txtSize.width) / 2, (CGRectGetHeight(rect) - txtSize.height) / 2);
+    [title drawInRect:rectTxt withAttributes:attributes];
+    
+    return UIGraphicsGetImageFromCurrentImageContext();
+}
+
 @end
 

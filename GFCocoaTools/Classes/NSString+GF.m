@@ -107,6 +107,10 @@
 }
 
 - (BOOL)isValidPhoneNumber {
+    if (self.length < 3) {
+        return NO;
+    }
+    
     if ([self isValidMobileNumber]) {
         return YES;
     }
