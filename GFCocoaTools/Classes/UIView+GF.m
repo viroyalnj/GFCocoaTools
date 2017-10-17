@@ -12,7 +12,7 @@
 
 - (UIImage *)snapshotImage {
     NSAssert(CGRectGetWidth(self.bounds) > 0 && CGRectGetHeight(self.bounds) > 0, @"size must be greater than zero");
-    UIGraphicsBeginImageContextWithOptions(self.bounds.size, NO, 0);
+    UIGraphicsBeginImageContextWithOptions(self.bounds.size, NO, [UIScreen mainScreen].scale);
     [self layoutIfNeeded];
     [self drawViewHierarchyInRect:self.bounds afterScreenUpdates:YES];
     
