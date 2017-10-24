@@ -8,11 +8,19 @@
 
 #import "GFTableView.h"
 #import <objc/runtime.h>
+#import <Masonry/Masonry.h>
 
 @interface GFTableView ()
 
 @property (nonatomic, strong)   NSMutableArray          *cache;
 @property (nonatomic, strong)   NSMutableDictionary     *tempCells;
+
+@property (nonatomic, copy)     UIImage                 *emptyImage;
+@property (nonatomic, copy)     NSString                *emptyString;
+
+@property (nonatomic, strong)   UIView                  *emptyView;
+@property (nonatomic, strong)   UIImageView             *imageView;
+@property (nonatomic, strong)   UILabel                 *labelView;
 
 @end
 
@@ -71,6 +79,76 @@
     return size.height;
 }
 
+- (void)setEmptyImage:(UIImage *)image emptyString:(NSString *)string {
+    self.emptyImage = image;
+    self.emptyString = string;
+}
+
+- (NSInteger)numberOfRowsInAllSections {
+    NSInteger count = 0;
+    for (NSInteger section = 0; section < self.numberOfSections; section++) {
+        count += [self numberOfRowsInSection:section];
+    }
+    
+    return count;
+}
+
+- (void)toogleEmptyView {
+    NSInteger count = [self numberOfRowsInAllSections];
+    if (count > 0) {
+        if (_emptyView && _emptyView.isHidden == NO) {
+            _emptyView.hidden = YES;
+        }
+    }
+    else {
+        self.emptyView.hidden = NO;
+        
+        [self.imageView setImage:self.emptyImage];
+        [self.labelView setText:self.emptyString];
+    }
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    if (_emptyView) {
+        _emptyView.frame = self.bounds;
+    }
+}
+
+
+- (UIView *)emptyView {
+    if (!_emptyView) {
+        _emptyView = [[UIView alloc] init];
+        
+        self.imageView = [[UIImageView alloc] init];
+        [self.imageView setContentMode:UIViewContentModeCenter];
+        [_emptyView addSubview:self.imageView];
+        
+        self.labelView = [[UILabel alloc] init];
+        self.labelView.numberOfLines = 3;
+        self.labelView.textAlignment = NSTextAlignmentCenter;
+        [_emptyView addSubview:self.labelView];
+        
+        UIView *superView = _emptyView;
+        [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.equalTo(superView.mas_centerX);
+        }];
+        
+        [self.labelView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(superView.mas_left).offset(8);
+            make.right.equalTo(superView.mas_right).offset(-8);
+            make.top.equalTo(self.imageView.mas_bottom).offset(16);
+            make.center.equalTo(superView);
+        }];
+        
+        //插入到最底下，不然会挡住hud
+        [self insertSubview:_emptyView atIndex:0];
+    }
+    
+    return _emptyView;
+}
+
 - (void)clearCache {
     [self.cache removeAllObjects];
 }
@@ -127,6 +205,8 @@
                                }];
     
     [super insertSections:sections withRowAnimation:animation];
+    
+    [self toogleEmptyView];
 }
 
 - (void)deleteSections:(NSIndexSet *)sections withRowAnimation:(UITableViewRowAnimation)animation {
@@ -138,6 +218,8 @@
                                }];
     
     [super deleteSections:sections withRowAnimation:animation];
+    
+    [self toogleEmptyView];
 }
 
 - (void)moveSection:(NSInteger)section toSection:(NSInteger)newSection {
@@ -165,6 +247,8 @@
                                  }];
     
     [super insertRowsAtIndexPaths:indexPaths withRowAnimation:animation];
+    
+    [self toogleEmptyView];
 }
 
 - (void)deleteRowsAtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths withRowAnimation:(UITableViewRowAnimation)animation {
@@ -179,6 +263,8 @@
                                  }];
     
     [super deleteRowsAtIndexPaths:indexPaths withRowAnimation:animation];
+    
+    [self toogleEmptyView];
 }
 
 - (void)reloadRowsAtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths withRowAnimation:(UITableViewRowAnimation)animation {
@@ -193,6 +279,8 @@
                                  }];
     
     [super reloadRowsAtIndexPaths:indexPaths withRowAnimation:animation];
+    
+    [self toogleEmptyView];
 }
 
 - (void)moveRowAtIndexPath:(NSIndexPath *)indexPath toIndexPath:(NSIndexPath *)newIndexPath {
@@ -213,6 +301,8 @@
 - (void)reloadData {
     [self.cache removeAllObjects];
     [super reloadData];
+    
+    [self toogleEmptyView];
 }
 
 #pragma mark - private methods

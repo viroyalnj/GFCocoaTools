@@ -19,4 +19,6 @@
 
 - (void)clearCacheForIndexPath:(NSIndexPath *)indexPath;
 
+- (void)setEmptyImage:(UIImage *)image emptyString:(NSString *)string;
+
 @end
