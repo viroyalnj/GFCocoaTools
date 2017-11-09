@@ -29,5 +29,6 @@
 #import "GFTableView.h"
 #import "GFCollectionView.h"
 #import "GFPinField.h"
+#import "UIDevice+GF.h"
 
 #endif /* GFCocoaTools_h */

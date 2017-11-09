@@ -54,4 +54,13 @@
     return UIDeviceResolution_Unknown;
 }
 
++ (CGSize)screenSize {
+    UIScreen *mainScreen = [UIScreen mainScreen];
+    CGFloat scale = ([mainScreen respondsToSelector:@selector(scale)] ? mainScreen.scale : 1.0f);
+    CGFloat pixelHeight = (CGRectGetHeight(mainScreen.bounds) * scale);
+    CGFloat pixelWidth = (CGRectGetWidth(mainScreen.bounds) * scale);
+    
+    return CGSizeMake(pixelWidth, pixelHeight);
+}
+
 @end

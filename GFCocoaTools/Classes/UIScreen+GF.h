@@ -27,4 +27,6 @@ typedef NS_ENUM(NSInteger, UIDeviceResolution)
 
 + (UIDeviceResolution)resolution;
 
++ (CGSize)screenSize;
+
 @end
