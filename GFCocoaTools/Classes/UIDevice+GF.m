@@ -70,10 +70,9 @@
     else if ([model isEqualToString:@"iPhone10,3"] || [model isEqualToString:@"iPhone10,6"]) {
         return @"iPhone X";
     }
-    
-    NSAssert(NO, @"YOU SHOULD NOT BE HERE!");
-    
-    return nil;
+    else {
+        return @"Simulator";
+    }
 }
 
 + (NSString *)osVersion {
