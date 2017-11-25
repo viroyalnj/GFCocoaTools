@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#define LATER_DATE(a, b)            a = a?[a laterDate:b]:b
+
 @interface NSDate (GF)
 
 + (NSDate *)dateWithYear:(NSInteger)year month:(NSInteger)month day:(NSInteger)day

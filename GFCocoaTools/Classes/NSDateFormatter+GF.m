@@ -40,4 +40,17 @@
     }
 }
 
+- (NSString *)clockTimeStringFromTimeInterval:(NSTimeInterval)interval {
+    NSInteger second = (NSInteger)interval % 60;
+    NSInteger min = (NSInteger)interval / 60 % 60;
+    NSInteger hour = (NSInteger)interval / (60 * 60);
+    
+    if (hour == 0) {
+        return [NSString stringWithFormat:@"%ld:%ld", (long)min, (long)second];
+    }
+    else {
+        return [NSString stringWithFormat:@"%ld:%ld:%ld", (long)hour, (long)min, (long)second];
+    }
+}
+
 @end

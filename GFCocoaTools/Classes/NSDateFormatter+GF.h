@@ -18,4 +18,6 @@
 
 - (NSString *)shortTimeStringFromTimeInterval:(NSTimeInterval)interval;
 
+- (NSString *)clockTimeStringFromTimeInterval:(NSTimeInterval)interval;
+
 @end
