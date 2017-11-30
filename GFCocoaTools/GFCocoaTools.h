@@ -30,5 +30,6 @@
 #import "GFCollectionView.h"
 #import "GFPinField.h"
 #import "UIDevice+GF.h"
+#import "SDImageCache+GF.h"
 
 #endif /* GFCocoaTools_h */

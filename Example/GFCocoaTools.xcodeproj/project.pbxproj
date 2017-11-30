@@ -247,6 +247,9 @@
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "guofengld@gmail.com";
 				TargetAttributes = {
+					6003F589195388D20070C39A = {
+						DevelopmentTeam = 6K8653KLAJ;
+					};
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
 					};
@@ -381,8 +384,8 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-GFCocoaTools_Example/Pods-GFCocoaTools_Example-resources.sh",
-				"$PODS_CONFIGURATION_BUILD_DIR/GFCocoaTools/GFCocoaTools.bundle",
-				"$PODS_CONFIGURATION_BUILD_DIR/GFPhotoBrowser/GFPhotoBrowser.bundle",
+				$PODS_CONFIGURATION_BUILD_DIR/GFCocoaTools/GFCocoaTools.bundle,
+				$PODS_CONFIGURATION_BUILD_DIR/GFPhotoBrowser/GFPhotoBrowser.bundle,
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
@@ -532,6 +535,7 @@
 			baseConfigurationReference = A16924D9A81D15F5374FDE21 /* Pods-GFCocoaTools_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 6K8653KLAJ;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GFCocoaTools/GFCocoaTools-Prefix.pch";
 				INFOPLIST_FILE = "GFCocoaTools/GFCocoaTools-Info.plist";
@@ -547,6 +551,7 @@
 			baseConfigurationReference = 026A338B3C1359C2624F1493 /* Pods-GFCocoaTools_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 6K8653KLAJ;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GFCocoaTools/GFCocoaTools-Prefix.pch";
 				INFOPLIST_FILE = "GFCocoaTools/GFCocoaTools-Info.plist";
