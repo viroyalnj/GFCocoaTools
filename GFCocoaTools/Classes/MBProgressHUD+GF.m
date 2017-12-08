@@ -70,12 +70,12 @@
     if (success) {
         [hud setMode:MBProgressHUDModeCustomView];
         [hud setCustomView:[[UIImageView alloc] initWithImage:[UIImage bundleImageNamed:@"ic_hud_success"]]];
-        hud.label.text = GFLocalizedString(@"Success", nil);
+        hud.label.text = labelText?:GFLocalizedString(@"Success", nil);
     }
     else {
         [hud setMode:MBProgressHUDModeCustomView];
         [hud setCustomView:[[UIImageView alloc] initWithImage:[UIImage bundleImageNamed:@"ic_hud_fail"]]];
-        hud.label.text = labelText?: GFLocalizedString(@"Failed", nil);;
+        hud.label.text = labelText?:GFLocalizedString(@"Failed", nil);;
     }
     [hud hideAnimated:YES afterDelay:PROGRESS_DELAY_HIDE];
     [hud setCompletionBlock:completionBlock];
