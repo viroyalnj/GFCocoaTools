@@ -31,5 +31,6 @@
 #import "GFPinField.h"
 #import "UIDevice+GF.h"
 #import "SDImageCache+GF.h"
+#import "AFSecurityPolicy+GF.h"
 
 #endif /* GFCocoaTools_h */
