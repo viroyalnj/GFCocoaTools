@@ -19,6 +19,8 @@
 
 - (NSString *)MD5;
 
+- (NSString *)MD5InShort;
+
 - (NSString *)sha1;
 
 - (BOOL)isValidPhoneNumber;

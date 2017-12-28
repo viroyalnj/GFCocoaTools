@@ -84,6 +84,11 @@
     return output;
 }
 
+- (NSString *)MD5InShort {
+    NSString *string = [self MD5];
+    return [string substringWithRange:NSMakeRange(8, 16)];
+}
+
 - (NSString *)sha1 {
     NSData *data = [self dataUsingEncoding:NSUTF8StringEncoding];
     
