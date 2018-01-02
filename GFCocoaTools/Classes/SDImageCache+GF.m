@@ -35,9 +35,7 @@
                                     for (NSURL *item in enumerator) {
                                         NSString *name = [item lastPathComponent];
                                         
-                                        if (![item hasDirectoryPath]) {
-                                            [[NSFileManager defaultManager] moveItemAtURL:item toURL:[desti URLByAppendingPathComponent:name] error:nil];
-                                        }
+                                        [[NSFileManager defaultManager] moveItemAtURL:item toURL:[desti URLByAppendingPathComponent:name] error:nil];
                                     }
                                 }
                             }];

@@ -74,4 +74,12 @@
     return [[self cocoaToolsStringBundle] localizedStringForKey:key value:value table:tableName];
 }
 
+- (NSString *)bundleName {
+    return [self objectForInfoDictionaryKey:@"CFBundleDisplayName"];
+}
+
+- (NSString *)bundleVersion {
+    return [self objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+}
+
 @end

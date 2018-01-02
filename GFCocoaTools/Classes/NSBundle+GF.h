@@ -20,6 +20,9 @@
 
 - (NSString *)cocoaToolsStringForKey:(NSString *)key value:(NSString *)value table:(NSString *)tableName;
 
+- (NSString *)bundleName;
+
+- (NSString *)bundleVersion;
 @end
 
 #define GFLocalizedString(key, comment) \
