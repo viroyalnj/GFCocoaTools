@@ -24,7 +24,12 @@
         NSData *data = [NSData dataWithContentsOfURL:localUrl];
         if (!data) {
             data = [NSData dataWithContentsOfURL:[NSURL URLWithString:string]];
-            [data writeToURL:localUrl atomically:YES];
+            if (data) {
+                [data writeToURL:localUrl atomically:YES];
+            }
+            else {
+                NSLog(@"*** cert file download failed! ***");
+            }
         }
         
         NSDirectoryEnumerator *enumerator = [[NSFileManager defaultManager] enumeratorAtURL:sslFolder

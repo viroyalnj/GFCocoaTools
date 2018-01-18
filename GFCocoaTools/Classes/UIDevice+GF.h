@@ -6,6 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <SystemConfiguration/CaptiveNetwork.h>
 
 @interface UIDevice (GF)
 
@@ -14,5 +15,9 @@
 + (NSString *)osModel;
 
 + (NSString *)osVersion;
+
++ (NSString *)WiFiSSID;
+
++ (NSString *)WiFiBSSID;
 
 @end

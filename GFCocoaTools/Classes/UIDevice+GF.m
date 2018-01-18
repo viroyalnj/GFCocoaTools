@@ -79,4 +79,24 @@
     return [[UIDevice currentDevice] systemVersion];
 }
 
++ (NSString *)WiFiSSID {
+    NSArray *ifs = (__bridge_transfer id)CNCopySupportedInterfaces();
+    for (NSString *ifnam in ifs) {
+        id info = (__bridge_transfer id)CNCopyCurrentNetworkInfo((__bridge CFStringRef)ifnam);
+        return [[ NSString alloc] initWithData:info[@"SSIDDATA"] encoding:NSUTF8StringEncoding];
+    }
+    
+    return nil;
+}
+
++ (NSString *)WiFiBSSID {
+    NSArray *ifs = (__bridge_transfer id)CNCopySupportedInterfaces();
+    for (NSString *ifnam in ifs) {
+        id info = (__bridge_transfer id)CNCopyCurrentNetworkInfo((__bridge CFStringRef)ifnam);
+        return info[@"BSSID"];
+    }
+    
+    return nil;
+}
+
 @end

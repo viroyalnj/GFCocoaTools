@@ -10,8 +10,18 @@
 
 @interface UIButton (GF)
 
-+ (instancetype)buttonWithTitleColor:(UIColor *)titleColor
-                     backgroundColor:(UIColor *)backgroundColor
++ (instancetype)buttonWithTitleColor:(nullable UIColor *)titleColor
+                     backgroundColor:(nullable UIColor *)backgroundColor
                          cornerRadii:(CGSize)cornerRadii;
+
++ (instancetype)buttonWithTitleColor:(nullable UIColor *)titleColor
+                     backgroundColor:(nullable UIColor *)backgroundColor
+                         borderColor:(nullable UIColor *)borderColor
+                         cornerRadii:(CGSize)cornerRadii;
+
+- (void)setTitleColor:(nullable UIColor *)titleColor
+      backgroundColor:(nullable UIColor *)backgroundColor
+          borderColor:(nullable UIColor *)borderColor
+          cornerRadii:(CGSize)cornerRadii;
 
 @end
