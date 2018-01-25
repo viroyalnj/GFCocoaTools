@@ -1,0 +1,956 @@
+//
+//  CarViewController.m
+//  Car
+//
+//  Created by 熊国锋 on 2016/9/1.
+//  Copyright © 2017年 南京远御网络科技有限公司. All rights reserved.
+//
+
+#import "CarViewController.h"
+#import "AppDelegate.h"
+#import "CarManager.h"
+#import "CarWelcomeTitleCell.h"
+#import "CarWelcomeContentCell.h"
+#import "LocationSearchViewController.h"
+#import "CarPadView.h"
+#import "CarTitleCell.h"
+#import "CarNewsCell.h"
+#import "CarMediaCell.h"
+#import "CarLocationCell.h"
+#import "CarAlertCell.h"
+#import "CarControllerCell.h"
+#import "CarViolationCell.h"
+#import "CarAlertCenterViewController.h"
+#import "LocationAlertViewController.h"
+#import "CarControllViewController.h"
+#import "WebViewController.h"
+#import "CarLocationViewController.h"
+#import "CarPhotosViewController.h"
+#import "CarLocationsDataModal.h"
+#import "CarDeviceSetupViewController.h"
+#import "CarTravelViewController.h"
+#import "CarViolationViewController.h"
+//#import <GFFeatureGuide/GFFeatureGuide.h>
+
+extern NSString *featureGuideKey;
+
+@interface CarViewController () < CarCellDelegate, LocationSearchDelegate, CarPadViewDelegate, BaseDataModalDelegate, UINavigationControllerDelegate, CarNewsCellDelegate >
+
+@property (nonatomic, strong)   NSArray             *cellDataNotLogin;
+@property (nonatomic, strong)   NSArray             *cellData;
+
+@property (nonatomic, weak)     UIButton            *leftBarButton;
+@property (nonatomic, weak)     UIButton            *rightBarButton;
+@property (nonatomic, weak)     CarPadView          *carPadView;
+
+@property (nonatomic, weak)     CarMediaCell        *mediaCell;
+@property (nonatomic, weak)     CarLocationCell     *locationCell;
+@property (nonatomic, weak)     CarAlertCell        *alertCell;
+
+@property (nonatomic, weak)     DeviceDataModal     *dataSource;
+@property (nonatomic, copy)     NSString            *dataKey;
+
+@property (nonatomic, strong)   NSArray             *homeIdsArr;
+@property (nonatomic, strong)   NSNumber            *illegal_amount;
+@property (nonatomic, strong)   NSNumber            *illegal_count;
+@property (nonatomic, assign)   NSInteger           requestCount;
+
+@property (nonatomic, assign)   NSArray             *boardcastArray;
+
+@end
+
+@implementation CarViewController
+
+- (instancetype)init {
+    if (self = [super initWithStyle:UITableViewStylePlain]) {
+        [[YuDeviceManager manager] addObserver:self
+                                    forKeyPath:@"deviceSelected"
+                                       options:NSKeyValueObservingOptionNew
+                                       context:nil];
+        
+        [[YuAccountManager manager] addObserver:self
+                                     forKeyPath:@"accountStatus"
+                                        options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionInitial
+                                        context:nil];
+        
+        [self addObservers];
+    }
+    
+    return self;
+}
+
+- (void)addObservers {
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(notifyYuCloudNeedSignInNotification:)
+                                                 name:YuCloudAccountKickedOffLoginNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(notifyYuCloudKickedOffCancelLoginNotification:)
+                                                 name:YuCloudAccountKickedOffCancelNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(notifyYuCloudDeviceNeedRefreshNotification:)
+                                                 name:YuCloudDeviceNeedRefreshNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(notifyYuCloudAccountAutoSignInFailedNotification:)
+                                                 name:YuCloudAccountAotuSignInFailedNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(alertLoadData:)
+                                                 name:@"alertLoadData"
+                                               object:nil];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary<NSKeyValueChangeKey,id> *)change
+                       context:(void *)context {
+    if ([keyPath isEqualToString:@"deviceSelected"]) {
+        DeviceData *device = change[NSKeyValueChangeNewKey];
+        if (device) {
+            [self startRefreshing];
+        }
+    }
+    else if([keyPath isEqualToString:@"accountStatus"]) {
+        self.dataKey = @"carDeviceDataKey";
+        self.dataSource = [DeviceDataModal sharedClient];
+        [self.dataSource registerDelegate:self
+                                   entity:[DeviceInfo entityName]
+                                predicate:[NSPredicate predicateWithFormat:@"userid == %@", YUCLOUD_ACCOUNT_USERID]
+                          sortDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO]]
+                       sectionNameKeyPath:nil
+                                      key:self.dataKey];
+        
+        [self.tableView reloadData];
+    }
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.tableView.backgroundColor = [UIColor whiteColor];
+    self.tableView.alwaysBounceVertical = YES;
+    self.tableView.showsVerticalScrollIndicator = NO;
+    self.tableView.backgroundColor = UIColorFromHex(0xf0f0f0);
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    CGRect rect = self.tableView.frame;
+    rect.origin.y = 0;
+    rect.size = [UIScreen mainScreen].bounds.size;
+    self.tableView.frame = rect;
+    
+    [self.tableView registerClass:[CarWelcomeTitleCell class]
+           forCellReuseIdentifier:[CarWelcomeTitleCell reuseIdentifier]];
+    
+    [self.tableView registerClass:[CarWelcomeContentCell class]
+           forCellReuseIdentifier:[CarWelcomeContentCell reuseIdentifier]];
+    
+    [self.tableView registerClass:[CarTitleCell class]
+           forCellReuseIdentifier:[CarTitleCell reuseIdentifier]];
+    
+    [self.tableView registerClass:[CarNewsCell class]
+           forCellReuseIdentifier:[CarNewsCell reuseIdentifier]];
+    
+    [self.tableView registerClass:[CarMediaCell class]
+           forCellReuseIdentifier:[CarMediaCell reuseIdentifier]];
+    
+    [self.tableView registerClass:[CarLocationCell class]
+           forCellReuseIdentifier:[CarLocationCell reuseIdentifier]];
+    
+    [self.tableView registerClass:[CarAlertCell class]
+           forCellReuseIdentifier:[CarAlertCell reuseIdentifier]];
+    
+    [self.tableView registerClass:[CarControllerCell class]
+           forCellReuseIdentifier:[CarControllerCell reuseIdentifier]];
+    
+    [self.tableView registerClass:[CarViolationCell class]
+           forCellReuseIdentifier:[CarViolationCell reuseIdentifier]];
+    
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self
+                            action:@selector(startRefreshing)
+                  forControlEvents:UIControlEventValueChanged];
+    [self.tableView.tableHeaderView addSubview:self.refreshControl];
+    
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1, 30)];
+}
+
+- (NSArray *)cellData {
+    if (YUCLOUD_DEVICE_SELECTED_DEVICE) {
+        if (!_cellData) {
+            CarCellItem *title = [CarCellItem itemWithType:CarCellItemTypeTitle];
+            CarCellItem *news = [CarCellItem itemWithType:CarCellItemTypeNews];
+            CarCellItem *media = [CarCellItem itemWithType:CarCellItemTypeMedia];
+            CarCellItem *location = [CarCellItem itemWithType:CarCellItemTypeLocations];
+            CarCellItem *alert = [CarCellItem itemWithType:CarCellItemRegionAlert];
+//            CarCellItem *controller = [CarCellItem itemWithType:CarCellItemController];
+            CarCellItem *violation = [CarCellItem itemWithType:CarCellItemViolation];
+            
+            _cellData = @[title, news, media, location, alert, violation];
+        }
+        
+        return _cellData;
+    }
+    else {
+        if (!_cellDataNotLogin) {
+            CarCellItem *title = [CarCellItem itemWithType:CarCellItemTypeWelcomeTitle];
+            CarCellItem *content = [CarCellItem itemWithType:CarCellItemTypeWelcomeContent];
+            
+            _cellDataNotLogin = @[title, content];
+        }
+        
+        return _cellDataNotLogin;
+    }
+}
+
+- (void)menuToogle {
+    AppDelegate *app = [AppDelegate sharedAppDelegate];
+    if (app.LeftSlideVC.closed) {
+        [app.LeftSlideVC openLeftViewWithCompletion:nil];
+    }
+    else {
+        [app.LeftSlideVC closeLeftViewWithCompletion:nil];
+    }
+}
+
+- (void)updateBarButtons {   
+    [self.leftBarButton setImage:[UIImage imageNamed:@"icon_car_menu"] forState:UIControlStateNormal];
+    [self.leftBarButton addTarget:self
+                           action:@selector(menuToogle)
+                 forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.rightBarButton removeTarget:self action:@selector(carShowMessageCenter) forControlEvents:UIControlEventTouchUpInside];
+    [self.rightBarButton removeTarget:self action:@selector(carShowLogin) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.rightBarButton setImage:[UIImage imageNamed:@"icon_car_messages"] forState:UIControlStateNormal];
+    [self.rightBarButton setTitle:nil forState:UIControlStateNormal];
+    [self.rightBarButton addTarget:self
+                            action:@selector(carShowMessageCenter)
+                  forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)carShowLogin {
+    [[CarManager manager] validLoginWithCompletion:nil];
+}
+
+- (void)carShowMessageCenter {
+    if ([[YuAccountManager manager] isServerSignin] && YUCLOUD_DEVICE_SELECTED_DEVICE) {
+        CarAlertCenterViewController *alert = [[CarAlertCenterViewController alloc] init];
+        [self presentViewController:alert
+                           animated:YES
+                            withNav:YES
+                         completion:nil];
+    }
+    else {
+        [self carShowLogin];
+    }
+}
+
+- (void)carShowAddDevice {
+    [[CarManager manager] validLoginWithCompletion:^(BOOL success, NSDictionary * _Nullable info) {
+        if (success) {
+            [[CarManager manager] startBindDevice];
+        }
+    }];
+}
+
+- (void)presentViewController:(UIViewController *)viewController
+                     animated:(BOOL)flag
+                      withNav:(BOOL)withNav
+                   completion:(void (^)(void))completion {
+//    if ([YuUserGuideManager manager].visible) {
+//        //引导功能展示中
+//        return;
+//    }
+    
+    if (withNav) {
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:viewController];
+        [nav setStatusBarStyle:UIStatusBarStyleLightContent];
+        nav.delegate = self;
+        [super presentViewController:nav animated:YES completion:completion];
+    }
+    else {
+        [super presentViewController:viewController animated:YES completion:completion];
+    }
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+//    [NSTimer scheduledTimerWithTimeInterval:.3
+//                                     target:self
+//                                   selector:@selector(delayTimerFire:)
+//                                   userInfo:nil
+//                                    repeats:YES];
+}
+#if 0
+- (void)delayTimerFire:(NSTimer *)timer {
+    UIWindow *window = APP_DELEGATE_WINDOW;
+    if ([window.subviews count] > 1) {
+        return;
+    }
+    
+    if (self.presentedViewController) {
+        return;
+    }
+    
+    [timer invalidate];
+    
+    UIImage *backgroundImage = [APP_DELEGATE_WINDOW takeSnapshot];
+    
+    GuideItem *item = [GuideItem itemWithSender:self.leftBarButton
+                                          title:@"点击查看菜单"
+                                    borderColor:[UIColor whiteColor]
+                                         insets:UIEdgeInsetsMake(-4, -4, -4, -4)
+                                        rounded:YES
+                                            uid:@"leftBarButton"];
+    
+    [[YuUserGuideManager manager] addGuideItems:@[item]
+                                            key:featureGuideKey
+                                backgroundImage:backgroundImage
+                               toViewController:self];
+    
+    if (YUCLOUD_DEVICE_SELECTED_DEVICE) {
+        GuideItem *itemBoard = [GuideItem itemWithSender:self.carPadView.boardView
+                                                   title:@"查看行驶信息"
+                                             borderColor:nil
+                                                  insets:UIEdgeInsetsZero
+                                                 rounded:NO
+                                                     uid:NSStringFromClass([self.carPadView.boardView class])];
+        
+        GuideItem *itemMedia = [GuideItem itemWithSender:self.mediaCell.contentView
+                                                   title:@"查看定位信息"
+                                             borderColor:nil
+                                                  insets:UIEdgeInsetsZero
+                                                 rounded:NO
+                                                     uid:NSStringFromClass([self.mediaCell class])];
+        
+        GuideItem *itemLocation = [GuideItem itemWithSender:self.locationCell.contentView
+                                                      title:@"想去哪儿？轻触这里开始"
+                                                borderColor:nil
+                                                     insets:UIEdgeInsetsZero
+                                                    rounded:NO
+                                                        uid:NSStringFromClass([self.locationCell class])];
+        
+        GuideItem *itemAlert = [GuideItem itemWithSender:self.alertCell.contentView
+                                                   title:@"设置位置提醒"
+                                             borderColor:nil
+                                                  insets:UIEdgeInsetsZero
+                                                 rounded:NO
+                                                     uid:NSStringFromClass([self.alertCell class])];
+        
+        [[YuUserGuideManager manager] addGuideItems:@[itemBoard, itemMedia, itemLocation, itemAlert]
+                                                key:featureGuideKey
+                                    backgroundImage:backgroundImage
+                                   toViewController:self];
+    }
+}
+#endif
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - UITableViewDelegate, UITableViewDataSource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [self.cellData count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    CarCellItem *item = self.cellData[indexPath.row];
+    CarBaseCell *cell = [tableView dequeueReusableCellWithIdentifier:[item reuseIdentifier]
+                                                        forIndexPath:indexPath];
+    
+    cell.delegate = self;
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView
+  willDisplayCell:(CarBaseCell *)cell
+forRowAtIndexPath:(NSIndexPath *)indexPath {
+    cell.item = self.cellData[indexPath.row];
+    DeviceData *device = YUCLOUD_DEVICE_SELECTED_DEVICE;
+    
+    switch (cell.item.type) {
+        case CarCellItemTypeWelcomeTitle: {
+            CarWelcomeTitleCell *title = (CarWelcomeTitleCell *)cell;
+            self.leftBarButton = title.leftBarBtn;
+            self.rightBarButton = title.rightBarBtn;
+            
+            title.title = @"御驾车联";
+            
+            [self updateBarButtons];
+        }
+            break;
+            
+        case CarCellItemTypeWelcomeContent: {
+            
+        }
+            break;
+            
+        case CarCellItemTypeTitle: {
+            CarTitleCell *title = (CarTitleCell *)cell;
+            self.leftBarButton = title.leftBarBtn;
+            self.rightBarButton = title.rightBarBtn;
+            self.carPadView = title.padView;
+            self.carPadView.delegate = self;
+            
+            [self.carPadView setDriveScore:[device.car_drive_score integerValue]
+                                  animated:YES];
+            
+            [self.carPadView setDriveMileage:[device.car_drive_mileage integerValue]];
+            [self.carPadView setDriveTime:[device.car_drive_time integerValue]];
+            
+            self.carPadView.driveComment = device.car_drive_comment;
+            self.carPadView.driveTimeUnit = device.car_drive_time_unit;
+            self.carPadView.carName = YUCLOUD_DEVICE_SELECTED_TITLE;
+            
+            [self updateBarButtons];
+        }
+            break;
+            
+        case CarCellItemTypeNews: {
+            
+            CarNewsCell *news = (CarNewsCell *)cell;
+            news.newsDelegate = self;
+            
+            NSArray *array = [NSUserDefaults carBroadcasts];
+            if(array.count) {
+               news.dataArray = array;
+            }
+        }
+            break;
+        case CarCellItemTypeMedia: {
+            self.mediaCell = (CarMediaCell *)cell;
+            self.mediaCell.shadow = YES;
+            if (device.location) {
+                [self.mediaCell setLocation:device.location.coordinate
+                                       date:device.locationDate
+                                     online:device.online];
+            }
+            else {
+                [self.mediaCell setLocation:kCLLocationCoordinate2DInvalid
+                                       date:nil
+                                     online:NO];
+            }
+        }
+            break;
+        case CarCellItemTypeLocations: {
+            self.locationCell = (CarLocationCell *)cell;
+            self.locationCell.shadow = YES;
+            [self.locationCell reloadData];
+        }
+            break;
+        case CarCellItemRegionAlert: {
+            self.alertCell = (CarAlertCell *)cell;
+            if (self.homeIdsArr.count > 0) {
+                [self.alertCell alertLoadData:self.homeIdsArr];
+            }
+            cell.shadow = YES;
+        }
+            break;
+        case CarCellItemController: {
+            cell.shadow = YES;
+        }
+            break;
+        case CarCellItemViolation: {
+            cell.shadow = YES;
+            CarViolationCell *violation = (CarViolationCell *)cell;
+            violation.illegal_amount = self.illegal_amount;
+            violation.illegal_count = self.illegal_count;
+            [violation reloadData];
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    CarCellItem *item = self.cellData[indexPath.row];
+    switch (item.type) {
+        case CarCellItemTypeWelcomeTitle:
+            return 68;
+        case CarCellItemTypeWelcomeContent:
+            return CGRectGetHeight([[UIScreen mainScreen] bounds]) - 80;
+        case CarCellItemTypeTitle:
+            return CAR_DASH_BOARD_HEIGHT;
+        case CarCellItemTypeNews:
+            return 30;
+        case CarCellItemTypeMedia:
+            return 180;
+            
+        default:
+            return 96;
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    CarCellItem *item = self.cellData[indexPath.row];
+    switch (item.type) {
+        case CarCellItemTypeNews:
+            break;
+            
+        case CarCellItemTypeLocations: {
+            [[CarManager manager] validDeviceSelectedWithCompletion:^(BOOL success, NSDictionary * _Nullable info) {
+                if (success) {
+                    LocationSearchViewController *search = [[LocationSearchViewController alloc] initWithStyle:UITableViewStyleGrouped];
+                    search.delegate = self;
+                    [self presentViewController:search
+                                       animated:YES
+                                        withNav:YES
+                                     completion:nil];
+                }
+            }];
+        }
+            break;
+            
+        case CarCellItemRegionAlert: {
+            [[CarManager manager] validDeviceSelectedWithCompletion:^(BOOL success, NSDictionary * _Nullable info) {
+                if (success) {
+                    LocationAlertViewController *alert = [[LocationAlertViewController alloc] init];
+                    [self presentViewController:alert
+                                       animated:YES
+                                        withNav:YES
+                                     completion:nil];
+                    }
+            }];
+        }
+            break;
+            
+        case CarCellItemController: {
+            [[CarManager manager] validDeviceSelectedWithCompletion:^(BOOL success, NSDictionary * _Nullable info) {
+                if (success){
+                    CarControllViewController *controller = [[CarControllViewController alloc] initWithStyle:UITableViewStyleGrouped];
+                    [self presentViewController:controller
+                                       animated:YES
+                                        withNav:YES
+                                     completion:nil];
+                }
+            }];
+        }
+            break;
+            
+        case CarCellItemViolation: {
+            [[CarManager manager] validDeviceSelectedWithCompletion:^(BOOL success, NSDictionary * _Nullable info) {
+                if (success) {
+                    DeviceCarInfo *carInfo = [YuDeviceManager manager].deviceSelected.carInfo;
+                    NSString *cityName = carInfo.city_name;
+                    NSString *engineNumber = carInfo.engine_number;
+                    NSString *frameNumber = carInfo.frame_number;
+                    NSString *plate_number = carInfo.plate_number;
+                    if ([cityName length] && [engineNumber length] && [frameNumber length] && [plate_number length]) {
+                        NSString *str = [NSString stringWithFormat:@"city=%@&engine_num=%@&frame_num=%@&plate_num=%@",cityName,engineNumber,frameNumber,plate_number];
+                        str = [str stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+                        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"home/illegal/detail?%@", str] relativeToURL:[YuCloudInterface sharedClient].baseURL];
+                        CarViolationViewController *web = [[CarViolationViewController alloc] initWithUrl:url];
+                        web.hidesBottomBarWhenPushed = YES;
+                        [self presentViewController:web
+                                           animated:YES
+                                            withNav:YES
+                                         completion:nil];
+                    }
+                    else {
+                        [YuAlertViewController showAlertWithTitle:@""
+                                                          message:@"请先完善车辆信息"
+                                                   viewController:self
+                                                          okTitle:YUCLOUD_STRING_OK
+                                                         okAction:^(UIAlertAction * _Nonnull action) {
+                                                             [self presentSetupPage];
+                                                         }
+                                                      cancelTitle:nil
+                                                     cancelAction:nil
+                                                       completion:nil];
+                    }
+                }
+            }];
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
+
+#pragma mark - CarCellDelegate
+
+- (void)carCell:(CarBaseCell *)cell searchLocation:(LocationPoiData *)poi {
+    if (poi) {
+        [self gotoLocation:poi];
+    }
+}
+
+- (void)carCell:(CarBaseCell *)cell selectedMedia:(NSInteger)index {
+    [[CarManager manager] validDeviceSelectedWithCompletion:^(BOOL success, NSDictionary * _Nullable info) {
+        if (success) {
+            DeviceData *device = YUCLOUD_DEVICE_SELECTED_DEVICE;
+            switch (index) {
+                case 0: {
+                    CarLocationViewController *location = [[CarLocationViewController alloc] init];
+                    location.location = [CarLocationItem itemWithCoordinate:device.location.coordinate
+                                                                       date:device.locationDate
+                                                                     online:device.online];
+                    
+                    [self presentViewController:location
+                                       animated:YES
+                                        withNav:YES
+                                     completion:^{
+                                     }];
+                }
+                    break;
+                case 1: {
+                    CarPhotosViewController *photos = [[CarPhotosViewController alloc] init];
+                    [self presentViewController:photos
+                                       animated:YES
+                                        withNav:YES
+                                     completion:nil];
+                }
+                    break;
+                    
+                default:
+                    break;
+            }
+        }
+    }];
+}
+
+#pragma mark - LocationSearchDelegate
+
+- (void)locationSearch:(id)poi with:(CGFloat)radius {
+    [self gotoLocation:poi];
+}
+
+- (void)gotoLocation:(LocationPoiData *)poi {
+    NSString *name = [poi.name length]?poi.name:poi.address;
+    [YuAlertViewController showAlertWithTitle:nil
+                                      message:[NSString stringWithFormat:@"确定前往 %@", name]
+                               viewController:self
+                                      okTitle:YUCLOUD_STRING_OK
+                                     okAction:^(UIAlertAction * _Nonnull action) {
+                                         [[CarManager manager] sendLocationToCar:poi
+                                                                      completion:^(BOOL success, NSDictionary * _Nullable info) {
+                                                                          
+                                                                      }];
+                                     }
+                                  cancelTitle:YUCLOUD_STRING_CANCEL
+                                 cancelAction:nil
+                               preferredStyle:UIAlertControllerStyleAlert
+                                   completion:nil];
+}
+
+#pragma mark - SignIn Notification
+
+- (void)notifyYuCloudNeedSignInNotification:(NSNotification *)notification {
+    [[YuAccountManager manager] clearAccountSigninStatus];
+    
+    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self carShowLogin];
+}
+
+- (void)notifyYuCloudKickedOffCancelLoginNotification:(NSNotification *)notification {
+    [[YuAccountManager manager] clearAccountSigninStatus];
+}
+
+- (void)notifyYuCloudAccountAutoSignInFailedNotification:(NSNotification *)notification {
+    //自动登录失败，提示登录界面
+    if ([[YuCloudInterface sharedClient] isReachable]) {
+        [[CarManager manager] validLoginWithCompletion:nil];
+    }
+}
+
+#pragma mark - DeviceRefresh Notification
+
+- (void)notifyYuCloudDeviceNeedRefreshNotification:(NSNotification *)notification {
+    [self startRefreshing];
+}
+
+- (void)startRefreshing {
+
+    if (![[YuAccountManager manager] isServerSignin] || !YUCLOUD_DEVICE_SELECTED_DEVICE) {
+        [self.refreshControl endRefreshing];
+        [self.tableView reloadData];
+        return;
+    }
+    
+    self.requestCount = 1;
+    YuDeviceManager *manager = [YuDeviceManager manager];
+    [manager requestHomeFor:YUCLOUD_DEVICE_SELECTED_DEVICEID
+                       type:@"all"
+                      block:^(BOOL success, NSDictionary * _Nullable info) {
+                          [self homeViewRefreshFinished];
+                          
+                          if (success) {
+                              DeviceData *device = [[[DeviceDataModal sharedClient] deviceDataWithId:YUCLOUD_DEVICE_SELECTED_DEVICEID] copy];
+                              
+                              NSNumber *online = YUCLOUD_VALIDATE_NUMBER(info[@"is_online"]);
+                              device.online = [online boolValue];
+                              
+                              NSDictionary *stat = info[@"stat"];
+                              device.car_drive_comment = stat[@"drive_comment"];
+                              device.car_drive_score = stat[@"drive_score"];
+                              device.car_drive_mileage = stat[@"drive_mileage"];
+                              device.car_drive_time = stat[@"drive_time"];
+                              device.car_drive_time_unit = stat[@"drive_time_unit"];
+                              
+                              NSDictionary *location = info[@"location"];
+                              NSNumber *lat = YUCLOUD_VALIDATE_NUMBER(location[@"lat"]);
+                              NSNumber *lon = YUCLOUD_VALIDATE_NUMBER(location[@"lon"]);
+                              NSNumber *date = YUCLOUD_VALIDATE_NUMBER(location[@"report_at"]);
+                              if (lat && lon && date) {
+                                  device.location = [[CLLocation alloc] initWithLatitude:[lat doubleValue]
+                                                                               longitude:[lon doubleValue]];
+                                  device.locationDate = [NSDate dateWithTimeIntervalSince1970:[date integerValue]];
+                              }
+                              else {
+                                  //没有位置信息，但也要置invalid value
+                                  device.location = [[CLLocation alloc] initWithCoordinate:kCLLocationCoordinate2DInvalid];
+                              }
+#if 0
+                              //服务器的nav 我们不用
+                              NSArray *nav = info[@"nav"];
+                              for (NSDictionary *item in nav) {
+                                  NSNumber *lat = YUCLOUD_VALIDATE_NUMBER(item[@"lat"]);
+                                  NSNumber *lon = YUCLOUD_VALIDATE_NUMBER(item[@"lon"]);
+                                  NSString *name = YUCLOUD_VALIDATE_STRING(item[@"name"]);
+                                  
+                                  [[LocationCacheDataModal sharedClient] ReGeocodeLocation:CLLocationCoordinate2DMake([lat doubleValue], [lon doubleValue])
+                                                                                     block:^(BOOL success, LocationPoiData * _Nullable data) {
+                                                                                         LocationSearchData *recent = [[LocationSearchData alloc] initWithType:LocationTypeRecent
+                                                                                                                                                      deviceid:YUCLOUD_DEVICE_SELECTED_DEVICEID];
+                                                                                         recent.center = CLLocationCoordinate2DMake([lat doubleValue], [lon doubleValue]);
+                                                                                         recent.name = data.name;
+                                                                                         recent.address = data.formattedAddress;
+                                                                                         recent.date = [NSDate date];
+                                                                                         recent.note = name;
+                                                                                         recent.deviceid = YUCLOUD_DEVICE_SELECTED_DEVICEID;
+                                                                                         
+                                                                                         [[CarLocationsDataModal sharedClient] addObject:recent];
+                                                                                     }];
+                              }
+#endif //0
+                                      
+                              [[DeviceDataModal sharedClient] addObject:device];
+                              
+                              NSArray *alertArr = info[@"lbs_alert"];
+                              NSMutableArray *alertDataArr = [NSMutableArray arrayWithCapacity:10];
+                              [[LocationAlertDataModal sharedClient] startSync];
+                              for (NSDictionary *item in alertArr) {
+                                  LocationAlertData *data = [[LocationAlertData alloc] init];
+                                  data.alertAddress = YUCLOUD_VALIDATE_STRING(item[@"address"]);
+                                  data.alertName = YUCLOUD_VALIDATE_STRING(item[@"name"]);
+                                  data.alertPoi = YUCLOUD_VALIDATE_STRING(item[@"poi"]);
+                                  data.alertId = YUCLOUD_VALIDATE_NUMBER(item[@"id"]);
+                                  data.deviceid = YUCLOUD_DEVICE_SELECTED_DEVICEID;
+                                  data.is_on = YUCLOUD_VALIDATE_NUMBER(item[@"is_on"]);
+                                  NSNumber *lat = YUCLOUD_VALIDATE_NUMBER(item[@"lat"]);
+                                  NSNumber *lon = YUCLOUD_VALIDATE_NUMBER(item[@"lon"]);
+                                  data.center = [[CLLocation alloc] initWithLatitude:[lat floatValue]longitude:[lon floatValue]];
+                                  NSString *weeks = YUCLOUD_VALIDATE_STRING(item[@"weeks"]);
+                                  data.alertWeeks = weeks;
+                                  if (weeks == nil) {
+                                      
+                                  }
+                                  else {
+                                      NSArray *strArr = [NSArray arrayWithObjects:@"周一",@"周二",@"周三",@"周四",@"周五",@"周六",@"周日", nil];
+                                      NSMutableArray *strMuArr = [[NSMutableArray alloc]init];
+                                      NSMutableArray *repeat = [[NSMutableArray alloc]init];
+                                      for(int i =0; i < [weeks length]; i++)
+                                      {
+                                          NSString *temp = [weeks substringWithRange:NSMakeRange(i, 1)];
+                                          if ([temp isEqualToString:@"1"]) {
+                                              NSString *str = strArr[i];
+                                              [strMuArr addObject:str];
+                                              [repeat addObject:[NSNumber numberWithInt:i]];
+                                          }
+                                      }
+                                      data.repeat = repeat;
+                                  }
+                                  [alertDataArr addObject:data];
+                              }
+                              [[LocationAlertDataModal sharedClient] addObjects:[NSArray arrayWithArray:alertDataArr]];
+                              [[LocationAlertDataModal sharedClient] finishSync];
+                              
+                              NSDictionary *illegal = info[@"vehicle_illegal"];
+                              self.illegal_amount = YUCLOUD_VALIDATE_NUMBER(illegal[@"illegal_amount"]);
+                              self.illegal_count = YUCLOUD_VALIDATE_NUMBER(illegal[@"illegal_count"]);
+                              
+                              dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                                  [self.tableView reloadData];
+                              });
+                          }
+                          else {
+                              NSNumber *error_code = [info valueForKey:@"error_code"];
+                              if ([error_code integerValue] == YuCloudInterfaceErrorCodeTokenExpired) {
+                                  ACCOUNT_SHOW_TOKEN_EXPIRED_ALERT(error_code, self.navigationController)
+                              }
+                              else {
+                                  NSString *errorMsg = [YuCloudInterface getErrorMsgForResult:info];
+                                  
+                                  MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                                  [hud setMode:MBProgressHUDModeCustomView];
+                                  hud.label.text = (errorMsg!= nil && [errorMsg length] > 1)?errorMsg : YUCLOUD_STRING_FAILED;
+                                  [hud hideAnimated:YES afterDelay:PROGRESS_DELAY_HIDE];
+                              }
+                                  }
+                      }];
+    
+    self.requestCount++;
+    
+    [manager updateDeviceInfoAndSave:NO
+                              device:YUCLOUD_DEVICE_SELECTED_DEVICEID
+                              action:YuDeviceParamActionVehicleInfo
+                               extra:nil
+                               block:^(BOOL success, NSDictionary * _Nullable info) {
+                                   [self homeViewRefreshFinished];
+                                   
+                                   if(success) {
+                                       
+                                       DeviceCarInfo *carInfo = [[DeviceDataModal sharedClient] deviceCarInfoWithId:YUCLOUD_DEVICE_SELECTED_DEVICEID];
+                                       
+                                       carInfo.buy_date = YUCLOUD_VALIDATE_NUMBER(info[@"buy_date"]);
+                                       carInfo.city = YUCLOUD_VALIDATE_NUMBER(info[@"city"]);
+                                       carInfo.city_name = YUCLOUD_VALIDATE_STRING(info[@"city_name"]);
+                                       carInfo.current_mileage = YUCLOUD_VALIDATE_NUMBER(info[@"current_mileage"]);
+                                       carInfo.engine_number = YUCLOUD_VALIDATE_STRING(info[@"engine_number"]);
+                                       carInfo.frame_number = YUCLOUD_VALIDATE_STRING(info[@"frame_number"]);
+                                       carInfo.plate_number = YUCLOUD_VALIDATE_STRING(info[@"plate_number"]);
+                                       carInfo.vehicle_brand_id = YUCLOUD_VALIDATE_NUMBER(info[@"vehicle_brand_id"]);
+                                       carInfo.vehicle_model_id = YUCLOUD_VALIDATE_NUMBER(info[@"vehicle_model_id"]);
+                                       carInfo.vehicle_series_id = YUCLOUD_VALIDATE_NUMBER(info[@"vehicle_series_id"]);
+                                       carInfo.vehicle_brand = YUCLOUD_VALIDATE_STRING(info[@"vehicle_brand"]);
+                                       carInfo.vehicle_series = YUCLOUD_VALIDATE_STRING(info[@"vehicle_series"]);
+                                       
+                                   } else {
+                                       NSNumber *error_code = [info valueForKey:@"error_code"];
+                                       if ([error_code integerValue] == YuCloudInterfaceErrorCodeTokenExpired) {
+                                           ACCOUNT_SHOW_TOKEN_EXPIRED_ALERT(error_code, self.navigationController)
+                                       }
+                                       else {
+                                           NSString *errorMsg = [YuCloudInterface getErrorMsgForResult:info];
+                                           
+                                           MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                                           [hud setMode:MBProgressHUDModeCustomView];
+                                           hud.label.text = (errorMsg!= nil && [errorMsg length] > 1)?errorMsg : YUCLOUD_STRING_FAILED;
+                                           [hud hideAnimated:YES afterDelay:PROGRESS_DELAY_HIDE];
+                                       }
+                                   }
+                               }];
+}
+
+- (void)homeViewRefreshFinished {
+    self.requestCount--;
+    
+    if (self.requestCount <= 0) {
+        [self homeViewRefreshEnd];
+    }
+}
+
+- (void)homeViewRefreshEnd {
+    [self.refreshControl endRefreshing];
+}
+
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    BOOL hidden;
+    UIStatusBarStyle style = scrollView.contentOffset.y > 20?UIStatusBarStyleDefault:UIStatusBarStyleLightContent;
+    if (scrollView.contentOffset.y < -20) {
+        hidden = NO;
+        style = UIStatusBarStyleDefault;
+    }
+    else if (scrollView.contentOffset.y > 0) {
+        hidden = YES;
+    }
+    else {
+        hidden = NO;
+        style = UIStatusBarStyleLightContent;
+    }
+    
+    [AppDelegate sharedAppDelegate].LeftSlideVC.statusBarStyle = style;
+    [AppDelegate sharedAppDelegate].LeftSlideVC.statusBarHidden = hidden;
+}
+
+#pragma mark - CarPadViewDelegate
+
+- (void)presentSetupPage {
+    [[CarManager manager] validDeviceSelectedWithCompletion:^(BOOL success, NSDictionary * _Nullable info) {
+        if (success) {
+            CarDeviceSetupViewController *setupViewController = [[CarDeviceSetupViewController alloc] init];
+            setupViewController.deviceData = YUCLOUD_DEVICE_SELECTED_DEVICE;
+            [self presentViewController:setupViewController animated:YES withNav:YES completion:nil];
+        }
+    }];
+}
+
+- (void)tapOnBoardView {
+    [[CarManager manager] validDeviceSelectedWithCompletion:^(BOOL success, NSDictionary * _Nullable info) {
+        if (success) {
+            CarTravelViewController *route = [[CarTravelViewController alloc] init];
+            [self presentViewController:route
+                               animated:YES
+                                withNav:YES
+                             completion:nil];
+        }
+    }];
+}
+
+#pragma mark - BaseDataModalDelegate
+
+- (void)dataModal:(BaseDataModal *)modal didChangeContentForKey:(NSString *)key {
+    [self.tableView reloadData];
+}
+
+#pragma mark - UINavigationControllerDelegate
+
+- (void)navigationController:(UINavigationController *)navigationController
+       didShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
+    if ([navigationController.viewControllers count] == 1) {
+        viewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:CAR_IMAGE_BACK
+                                                                                           style:UIBarButtonItemStylePlain
+                                                                                          target:self
+                                                                                          action:@selector(closeView)];
+    }
+}
+
+- (void)closeView {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)alertLoadData:(NSNotification *)notification {
+    self.homeIdsArr = [NSArray arrayWithArray:notification.object];
+    [self.tableView reloadData];
+}
+
+#pragma mark - CarNewsCellDelegate
+- (void)jumpToNewsWithUrl:(NSString *)url {
+    if(!url.length) {
+        url = @"http://www.163.com/";
+    }
+    WebViewController *web = [[WebViewController alloc] initWithUrl:[NSURL URLWithString:url]];
+    [self presentViewController:web animated:YES withNav:YES completion:nil];
+}
+
+@end
+
+
