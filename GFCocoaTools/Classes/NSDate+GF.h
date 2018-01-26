@@ -29,4 +29,9 @@
 - (BOOL)sameDayTo:(NSDate *)date;
 
 - (long)secondsSince1970;
+
+- (NSDate *)startDateOfThisDay;
+
+- (NSDate *)endDateOfThisDay;
+
 @end

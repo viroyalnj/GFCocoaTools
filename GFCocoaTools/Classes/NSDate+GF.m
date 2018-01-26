@@ -77,4 +77,14 @@
     return seconds;
 }
 
+- (NSDate *)startDateOfThisDay {
+    return [NSDate dateWithYear:self.year month:self.month day:self.day
+                           hour:0 minute:0 second:0];
+}
+
+- (NSDate *)endDateOfThisDay {
+    return [NSDate dateWithYear:self.year month:self.month day:self.day
+                           hour:23 minute:59 second:59];
+}
+
 @end
