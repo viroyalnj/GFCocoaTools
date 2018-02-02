@@ -9,7 +9,6 @@
 #ifndef GFCocoaTools_h
 #define GFCocoaTools_h
 
-#import "ArchiveManager.h"
 #import "MBProgressHUD+GF.h"
 #import "NSAttributedString+GF.h"
 #import "NSBundle+GF.h"
@@ -30,7 +29,6 @@
 #import "GFCollectionView.h"
 #import "GFPinField.h"
 #import "UIDevice+GF.h"
-#import "SDImageCache+GF.h"
 #import "AFSecurityPolicy+GF.h"
 #import "UIBarButtonItem+GF.h"
 
