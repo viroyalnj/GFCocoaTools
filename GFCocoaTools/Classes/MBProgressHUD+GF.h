@@ -19,18 +19,18 @@ NS_ASSUME_NONNULL_BEGIN
                        image:(nullable UIImage *)image
                      message:(nullable NSString *)message
                    delayHide:(BOOL)delayHide
-                  completion:(nullable void (^)())completionBlock;
+                  completion:(nullable void (^)(void))completionBlock;
 
 + (MBProgressHUD *)showFinishHudOn:(UIView *)view
                         withResult:(BOOL)success
                          labelText:(nullable NSString *)labelText
                          delayHide:(BOOL)delayHide
-                        completion:(nullable void (^)())completionBlock;
+                        completion:(nullable void (^)(void))completionBlock;
 
 + (void)finishHudWithResult:(BOOL)success
                         hud:(MBProgressHUD *)hud
                   labelText:(nullable NSString *)labelText
-                 completion:(nullable void (^)())completionBlock;
+                 completion:(nullable void (^)(void))completionBlock;
 @end
 
 NS_ASSUME_NONNULL_END

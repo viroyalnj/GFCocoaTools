@@ -8,8 +8,9 @@
 
 Pod::Spec.new do |s|
   s.name             = 'GFCocoaTools'
-  s.version          = '0.1.5'
+  s.version          = '0.2.0'
   s.summary          = '自己使用的一个工具类.'
+  s.module_name      = 'GFCocoaTools'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -29,10 +30,14 @@ Pod::Spec.new do |s|
 # s.social_media_url = 'https://twitter.com/guofengjd'
 
   s.ios.deployment_target = '8.1'
+  s.requires_arc = true
 
   s.source_files = 'GFCocoaTools/GFCocoaTools.h'
+
   s.dependency 'MBProgressHUD'
   s.dependency 'SDWebImage'
+  s.dependency 'AFNetworking'
+  s.dependency 'Masonry'
 
   s.resource_bundles = {
     'GFCocoaTools' => ['GFCocoaTools/Assets/*.png', 'GFCocoaTools/Assets/*.lproj']
@@ -42,8 +47,8 @@ Pod::Spec.new do |s|
     ss.source_files = 'GFCocoaTools/Classes/*.{h,m}'
   end
 
-  s.subspec 'SSZipArchive' do |ss|
-    ss.source_files = ['GFCocoaTools/SSZipArchive/*.{h,c,m}','GFCocoaTools/SSZipArchive/aes/*.{h,c,m}','GFCocoaTools/SSZipArchive/minizip/*.{h,c,m}']
-  end
+# s.subspec 'SSZipArchive' do |ss|
+#   ss.source_files = ['GFCocoaTools/SSZipArchive/*.{h,c,m}','GFCocoaTools/SSZipArchive/aes/*.{h,c,m}','GFCocoaTools/SSZipArchive/minizip/*.{h,c,m}']
+# end
 
 end

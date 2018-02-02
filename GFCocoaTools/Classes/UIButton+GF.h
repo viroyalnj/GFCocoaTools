@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface UIButton (GF)
 
 + (instancetype)buttonWithTitleColor:(nullable UIColor *)titleColor
@@ -25,3 +27,6 @@
           cornerRadii:(CGSize)cornerRadii;
 
 @end
+
+NS_ASSUME_NONNULL_END
+

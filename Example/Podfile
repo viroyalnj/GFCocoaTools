@@ -1,13 +1,10 @@
 platform :ios, '8.1'
 inhibit_all_warnings!
+use_frameworks!
 
 target 'GFCocoaTools_Example' do
+  
   pod 'GFCocoaTools', :path => '../'
   pod 'GFPhotoBrowser'
   
-  target 'GFCocoaTools_Tests' do
-    inherit! :search_paths
-
-    
-  end
 end

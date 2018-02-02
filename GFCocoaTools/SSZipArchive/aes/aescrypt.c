@@ -18,9 +18,6 @@ and fitness for purpose.
 Issue Date: 20/12/2007
 */
 
-#include "aesopt.h"
-#include "aestab.h"
-
 #if defined(__cplusplus)
 extern "C"
 {

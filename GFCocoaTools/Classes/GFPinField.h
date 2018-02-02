@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <Masonry/Masonry.h>
 #import "UIView+Shake.h"
+
+@import Masonry;
 
 @class GFPinField;
 

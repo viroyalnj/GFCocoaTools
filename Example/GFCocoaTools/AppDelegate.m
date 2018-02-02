@@ -7,7 +7,8 @@
 //
 
 #import "AppDelegate.h"
-#import <GFCocoaTools/GFCocoaTools.h>
+
+@import GFCocoaTools;
 
 @implementation AppDelegate
 

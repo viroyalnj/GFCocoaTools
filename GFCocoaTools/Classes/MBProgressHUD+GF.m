@@ -16,7 +16,7 @@
                        image:(UIImage *)image
                      message:(NSString *)message
                    delayHide:(BOOL)delayHide
-                  completion:(void (^)())completionBlock {
+                  completion:(void (^)(void))completionBlock {
     
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
     if (image) {
@@ -41,7 +41,7 @@
                         withResult:(BOOL)success
                          labelText:(NSString *)labelText
                          delayHide:(BOOL)delayHide
-                        completion:(void (^)())completionBlock {
+                        completion:(void (^)(void))completionBlock {
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
     
     UIImage *image = success?[UIImage bundleImageNamed:@"ic_hud_success"]:[UIImage bundleImageNamed:@"ic_hud_fail"];
@@ -66,7 +66,7 @@
 + (void)finishHudWithResult:(BOOL)success
                         hud:(MBProgressHUD *)hud
                   labelText:(NSString *)labelText
-                 completion:(void (^)())completionBlock {
+                 completion:(void (^)(void))completionBlock {
     if (success) {
         [hud setMode:MBProgressHUDModeCustomView];
         [hud setCustomView:[[UIImageView alloc] initWithImage:[UIImage bundleImageNamed:@"ic_hud_success"]]];

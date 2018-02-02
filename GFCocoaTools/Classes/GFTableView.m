@@ -8,7 +8,8 @@
 
 #import "GFTableView.h"
 #import <objc/runtime.h>
-#import <Masonry/Masonry.h>
+
+@import Masonry;
 
 @interface GFTableView ()
 

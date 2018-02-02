@@ -5,7 +5,7 @@
 //  Created by 熊国锋 on 2017/12/19.
 //
 
-#import <AFNetworking/AFNetworking.h>
+@import AFNetworking;
 
 NS_ASSUME_NONNULL_BEGIN
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		25569F3148ADB97736C79FA0 /* Pods_GFCocoaTools_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62BE8B25811470853DB6B469 /* Pods_GFCocoaTools_Example.framework */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -20,9 +21,7 @@
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
-		79D1B9AF679A7B28BD046B82 /* libPods-GFCocoaTools_Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 34982A165BA6D7AE130C23B4 /* libPods-GFCocoaTools_Example.a */; };
 		AEF11B7A1EC2BD1D0058F297 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEF11B791EC2BD1D0058F297 /* LaunchScreen.storyboard */; };
-		E2AE7163F6FDC5A5260CB615 /* libPods-GFCocoaTools_Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 027DE5FBF1628A055F3B5BA7 /* libPods-GFCocoaTools_Tests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,10 +35,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0134D4479F6148F0C138F239 /* Pods-GFCocoaTools_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GFCocoaTools_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GFCocoaTools_Tests/Pods-GFCocoaTools_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		026A338B3C1359C2624F1493 /* Pods-GFCocoaTools_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GFCocoaTools_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-GFCocoaTools_Example/Pods-GFCocoaTools_Example.release.xcconfig"; sourceTree = "<group>"; };
 		027DE5FBF1628A055F3B5BA7 /* libPods-GFCocoaTools_Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GFCocoaTools_Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		34982A165BA6D7AE130C23B4 /* libPods-GFCocoaTools_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GFCocoaTools_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		56E3D37227E935B9C3C16055 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* GFCocoaTools_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GFCocoaTools_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -60,11 +57,11 @@
 		6003F5B9195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6003F5BB195388D20070C39A /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
+		62BE8B25811470853DB6B469 /* Pods_GFCocoaTools_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GFCocoaTools_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C0E9BA679ECEE930C5FA6CF /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		77D5B27B32AB19D63D0A9F51 /* GFCocoaTools.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = GFCocoaTools.podspec; path = ../GFCocoaTools.podspec; sourceTree = "<group>"; };
+		77D5B27B32AB19D63D0A9F51 /* GFCocoaTools.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = GFCocoaTools.podspec; path = ../GFCocoaTools.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A16924D9A81D15F5374FDE21 /* Pods-GFCocoaTools_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GFCocoaTools_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GFCocoaTools_Example/Pods-GFCocoaTools_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		AEF11B791EC2BD1D0058F297 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		EDBAC061C1622ECD0344664F /* Pods-GFCocoaTools_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GFCocoaTools_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GFCocoaTools_Tests/Pods-GFCocoaTools_Tests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,7 +72,7 @@
 				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
 				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
-				79D1B9AF679A7B28BD046B82 /* libPods-GFCocoaTools_Example.a in Frameworks */,
+				25569F3148ADB97736C79FA0 /* Pods_GFCocoaTools_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,7 +83,6 @@
 				6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */,
 				6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */,
-				E2AE7163F6FDC5A5260CB615 /* libPods-GFCocoaTools_Tests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,8 +117,8 @@
 				6003F58F195388D20070C39A /* CoreGraphics.framework */,
 				6003F591195388D20070C39A /* UIKit.framework */,
 				6003F5AF195388D20070C39A /* XCTest.framework */,
-				34982A165BA6D7AE130C23B4 /* libPods-GFCocoaTools_Example.a */,
 				027DE5FBF1628A055F3B5BA7 /* libPods-GFCocoaTools_Tests.a */,
+				62BE8B25811470853DB6B469 /* Pods_GFCocoaTools_Example.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -187,8 +183,6 @@
 			children = (
 				A16924D9A81D15F5374FDE21 /* Pods-GFCocoaTools_Example.debug.xcconfig */,
 				026A338B3C1359C2624F1493 /* Pods-GFCocoaTools_Example.release.xcconfig */,
-				0134D4479F6148F0C138F239 /* Pods-GFCocoaTools_Tests.debug.xcconfig */,
-				EDBAC061C1622ECD0344664F /* Pods-GFCocoaTools_Tests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -220,12 +214,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6003F5C2195388D20070C39A /* Build configuration list for PBXNativeTarget "GFCocoaTools_Tests" */;
 			buildPhases = (
-				8ACC8DAC4A1C25C8DDED408B /* [CP] Check Pods Manifest.lock */,
 				6003F5AA195388D20070C39A /* Sources */,
 				6003F5AB195388D20070C39A /* Frameworks */,
 				6003F5AC195388D20070C39A /* Resources */,
-				81728A27BED45F930D3CDFBE /* [CP] Embed Pods Frameworks */,
-				9C93BE44B4535C2FA2D38356 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -296,63 +287,28 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		81728A27BED45F930D3CDFBE /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GFCocoaTools_Tests/Pods-GFCocoaTools_Tests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8ACC8DAC4A1C25C8DDED408B /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-GFCocoaTools_Tests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9C93BE44B4535C2FA2D38356 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GFCocoaTools_Tests/Pods-GFCocoaTools_Tests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		B0E1AE16C406FA4D28A92ACA /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-GFCocoaTools_Example/Pods-GFCocoaTools_Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/GFCocoaTools/GFCocoaTools.framework",
+				"${BUILT_PRODUCTS_DIR}/GFPhotoBrowser/GFPhotoBrowser.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GFCocoaTools.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GFPhotoBrowser.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -384,12 +340,13 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-GFCocoaTools_Example/Pods-GFCocoaTools_Example-resources.sh",
-				$PODS_CONFIGURATION_BUILD_DIR/GFCocoaTools/GFCocoaTools.bundle,
-				$PODS_CONFIGURATION_BUILD_DIR/GFPhotoBrowser/GFPhotoBrowser.bundle,
+				"${PODS_CONFIGURATION_BUILD_DIR}/GFCocoaTools/GFCocoaTools.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/GFPhotoBrowser/GFPhotoBrowser.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GFCocoaTools.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GFPhotoBrowser.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -576,7 +533,6 @@
 		};
 		6003F5C3195388D20070C39A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0134D4479F6148F0C138F239 /* Pods-GFCocoaTools_Tests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -600,7 +556,6 @@
 		};
 		6003F5C4195388D20070C39A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EDBAC061C1622ECD0344664F /* Pods-GFCocoaTools_Tests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (

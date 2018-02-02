@@ -7,7 +7,7 @@
 //
 
 #import "ArchiveManager.h"
-#import "SSZipArchive.h"
+//#import "SSZipArchive.h"
 
 @interface ArchiveManager ()
 
@@ -44,15 +44,17 @@
         destination = url.path;
     }
     
-    [SSZipArchive unzipFileAtPath:path
-                    toDestination:destination
-                  progressHandler:^(NSString * _Nonnull entry, unz_file_info zipInfo, long entryNumber, long total) {
-                  }
-                completionHandler:^(NSString * _Nonnull path, BOOL succeeded, NSError * _Nonnull error) {
-                    if (complection) {
-                        complection(succeeded, destination);
-                    }
-                }];
+    NSAssert(NO, @"not supported");
+//
+//    [SSZipArchive unzipFileAtPath:path
+//                    toDestination:destination
+//                  progressHandler:^(NSString * _Nonnull entry, unz_file_info zipInfo, long entryNumber, long total) {
+//                  }
+//                completionHandler:^(NSString * _Nonnull path, BOOL succeeded, NSError * _Nonnull error) {
+//                    if (complection) {
+//                        complection(succeeded, destination);
+//                    }
+//                }];
 }
 
 @end

@@ -39,6 +39,9 @@
 #include <memory.h>
 
 #include "fileenc.h"
+#include "aesopt.h"
+#include "aestab.h"
+#include "aes.h"
 
 #if defined(__cplusplus)
 extern "C"
