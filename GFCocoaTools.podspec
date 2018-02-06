@@ -40,7 +40,7 @@ Pod::Spec.new do |s|
   s.dependency 'Masonry'
 
   s.resource_bundles = {
-    'GFCocoaTools' => ['GFCocoaTools/Assets/*.png', 'GFCocoaTools/Assets/*.lproj']
+    'Resources' => ['GFCocoaTools/Resources/*.png', 'GFCocoaTools/Resources/*.lproj']
   }
 
   s.subspec 'Classes' do |ss|
