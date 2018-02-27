@@ -20,4 +20,8 @@
 
 + (NSString *)WiFiBSSID;
 
++ (NSString *)appVersion;
+
++ (NSString *)appBuildVersion;
+
 @end

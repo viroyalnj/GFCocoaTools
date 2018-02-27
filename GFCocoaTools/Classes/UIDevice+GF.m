@@ -99,4 +99,14 @@
     return nil;
 }
 
++ (NSString *)appVersion {
+    NSDictionary *info = [NSBundle mainBundle].infoDictionary;
+    return [info objectForKey:@"CFBundleShortVersionString"];
+}
+
++ (NSString *)appBuildVersion {
+    NSDictionary *info = [NSBundle mainBundle].infoDictionary;
+    return [info objectForKey:kCFBundleVersionKey];
+}
+
 @end
