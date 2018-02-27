@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'GFCocoaTools'
-  s.version          = '0.2.0'
+  s.version          = '0.2.1'
   s.summary          = '自己使用的一个工具类.'
   s.module_name      = 'GFCocoaTools'
 

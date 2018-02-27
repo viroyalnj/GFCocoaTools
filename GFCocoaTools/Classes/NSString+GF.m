@@ -75,7 +75,7 @@
     NSData *data = [self dataUsingEncoding:NSUTF8StringEncoding];
     
     unsigned char r[CC_MD5_DIGEST_LENGTH];
-    CC_MD5(data.bytes, data.length, r);
+    CC_MD5(data.bytes, (CC_LONG)data.length, r);
     
     NSMutableString *output = [NSMutableString string];
     for (int i = 0; i < CC_MD5_DIGEST_LENGTH; i++) {
@@ -94,7 +94,7 @@
     NSData *data = [self dataUsingEncoding:NSUTF8StringEncoding];
     
     uint8_t digest[CC_SHA1_DIGEST_LENGTH];
-    CC_SHA1(data.bytes, data.length, digest);
+    CC_SHA1(data.bytes, (CC_LONG)data.length, digest);
     
     NSMutableString *output = [NSMutableString stringWithCapacity:CC_SHA1_DIGEST_LENGTH * 2];
     

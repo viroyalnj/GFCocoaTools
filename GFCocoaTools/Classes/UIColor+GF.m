@@ -36,11 +36,11 @@
     [self getRed:&red green:&green blue:&blue alpha:&a];
     
     NSString *string = @"0x";
-    string = [string stringByAppendingString:[NSString stringWithFormat:@"%02X", (unsigned long)(red * 255)]];
-    string = [string stringByAppendingString:[NSString stringWithFormat:@"%02X", (unsigned long)(green * 255)]];
-    string = [string stringByAppendingString:[NSString stringWithFormat:@"%02X", (unsigned long)(blue * 255)]];
+    string = [string stringByAppendingString:[NSString stringWithFormat:@"%02X", (unsigned int)(red * 255)]];
+    string = [string stringByAppendingString:[NSString stringWithFormat:@"%02X", (unsigned int)(green * 255)]];
+    string = [string stringByAppendingString:[NSString stringWithFormat:@"%02X", (unsigned int)(blue * 255)]];
     if (alpha) {
-        string = [string stringByAppendingString:[NSString stringWithFormat:@"%02X", (unsigned long)(a * 255)]];
+        string = [string stringByAppendingString:[NSString stringWithFormat:@"%02X", (unsigned int)(a * 255)]];
     }
     
     return string;

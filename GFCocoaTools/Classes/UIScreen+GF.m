@@ -14,7 +14,6 @@
     UIScreen *mainScreen = [UIScreen mainScreen];
     CGFloat scale = ([mainScreen respondsToSelector:@selector(scale)] ? mainScreen.scale : 1.0f);
     CGFloat pixelHeight = (CGRectGetHeight(mainScreen.bounds) * scale);
-    CGFloat pixelWidth = (CGRectGetWidth(mainScreen.bounds) * scale);
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
         if (scale == 2.0f) {
