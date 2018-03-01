@@ -127,4 +127,30 @@
     return [phoneTest evaluateWithObject:self];
 }
 
+- (NSString *)pinyin {
+    // 将NSString装换成NSMutableString
+    NSMutableString *pinyin = [self mutableCopy];
+    
+    // 将汉字转换为拼音(带音标)
+    CFStringTransform((__bridge CFMutableStringRef)pinyin, NULL, kCFStringTransformMandarinLatin, NO);
+    
+    // 去掉拼音的音标
+    CFStringTransform((__bridge CFMutableStringRef)pinyin, NULL, kCFStringTransformStripCombiningMarks, NO);
+    
+    // 替换数字
+    NSString *string = pinyin.copy;
+    string = [string stringByReplacingOccurrencesOfString:@"1" withString:@"yi"];
+    string = [string stringByReplacingOccurrencesOfString:@"2" withString:@"er"];
+    string = [string stringByReplacingOccurrencesOfString:@"3" withString:@"san"];
+    string = [string stringByReplacingOccurrencesOfString:@"4" withString:@"si"];
+    string = [string stringByReplacingOccurrencesOfString:@"5" withString:@"wu"];
+    string = [string stringByReplacingOccurrencesOfString:@"6" withString:@"liu"];
+    string = [string stringByReplacingOccurrencesOfString:@"7" withString:@"qi"];
+    string = [string stringByReplacingOccurrencesOfString:@"8" withString:@"ba"];
+    string = [string stringByReplacingOccurrencesOfString:@"9" withString:@"jiu"];
+    string = [string stringByReplacingOccurrencesOfString:@"0" withString:@"shi"];
+    
+    return string;
+}
+
 @end

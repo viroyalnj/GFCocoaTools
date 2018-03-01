@@ -26,4 +26,6 @@
 
 - (BOOL)isValidMobileNumber;
 
+- (NSString *)pinyin;
+
 @end
