@@ -150,6 +150,9 @@
     string = [string stringByReplacingOccurrencesOfString:@"9" withString:@"jiu"];
     string = [string stringByReplacingOccurrencesOfString:@"0" withString:@"shi"];
     
+    // 滤掉空格
+    string = [string stringByReplacingOccurrencesOfString:@" " withString:@""];
+    
     return string;
 }
 
