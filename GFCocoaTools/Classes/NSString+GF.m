@@ -139,19 +139,19 @@
     
     // 替换数字
     NSString *string = pinyin.copy;
-    string = [string stringByReplacingOccurrencesOfString:@"1" withString:@"yi"];
-    string = [string stringByReplacingOccurrencesOfString:@"2" withString:@"er"];
-    string = [string stringByReplacingOccurrencesOfString:@"3" withString:@"san"];
-    string = [string stringByReplacingOccurrencesOfString:@"4" withString:@"si"];
-    string = [string stringByReplacingOccurrencesOfString:@"5" withString:@"wu"];
-    string = [string stringByReplacingOccurrencesOfString:@"6" withString:@"liu"];
-    string = [string stringByReplacingOccurrencesOfString:@"7" withString:@"qi"];
-    string = [string stringByReplacingOccurrencesOfString:@"8" withString:@"ba"];
-    string = [string stringByReplacingOccurrencesOfString:@"9" withString:@"jiu"];
-    string = [string stringByReplacingOccurrencesOfString:@"0" withString:@"shi"];
+    string = [string stringByReplacingOccurrencesOfString:@"1" withString:@" yi "];
+    string = [string stringByReplacingOccurrencesOfString:@"2" withString:@" er "];
+    string = [string stringByReplacingOccurrencesOfString:@"3" withString:@" san "];
+    string = [string stringByReplacingOccurrencesOfString:@"4" withString:@" si "];
+    string = [string stringByReplacingOccurrencesOfString:@"5" withString:@" wu "];
+    string = [string stringByReplacingOccurrencesOfString:@"6" withString:@" liu "];
+    string = [string stringByReplacingOccurrencesOfString:@"7" withString:@" qi "];
+    string = [string stringByReplacingOccurrencesOfString:@"8" withString:@" ba "];
+    string = [string stringByReplacingOccurrencesOfString:@"9" withString:@" jiu "];
+    string = [string stringByReplacingOccurrencesOfString:@"0" withString:@" shi "];
     
-    // 滤掉空格
-    string = [string stringByReplacingOccurrencesOfString:@" " withString:@""];
+    // 两个空格替换为一个
+    string = [string stringByReplacingOccurrencesOfString:@"  " withString:@" "];
     
     return string;
 }
