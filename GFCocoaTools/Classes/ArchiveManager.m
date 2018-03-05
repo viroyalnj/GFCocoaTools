@@ -7,7 +7,7 @@
 //
 
 #import "ArchiveManager.h"
-//#import "SSZipArchive.h"
+#import <SSZipArchive/SSZipArchive.h>
 
 @interface ArchiveManager ()
 
@@ -43,18 +43,16 @@
         NSURL *url = [[[NSFileManager defaultManager] URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask] lastObject];
         destination = url.path;
     }
-    
-    NSAssert(NO, @"not supported");
-//
-//    [SSZipArchive unzipFileAtPath:path
-//                    toDestination:destination
-//                  progressHandler:^(NSString * _Nonnull entry, unz_file_info zipInfo, long entryNumber, long total) {
-//                  }
-//                completionHandler:^(NSString * _Nonnull path, BOOL succeeded, NSError * _Nonnull error) {
-//                    if (complection) {
-//                        complection(succeeded, destination);
-//                    }
-//                }];
+
+    [SSZipArchive unzipFileAtPath:path
+                    toDestination:destination
+                  progressHandler:^(NSString * _Nonnull entry, unz_file_info zipInfo, long entryNumber, long total) {
+                  }
+                completionHandler:^(NSString * _Nonnull path, BOOL succeeded, NSError * _Nonnull error) {
+                    if (complection) {
+                        complection(succeeded, destination);
+                    }
+                }];
 }
 
 @end

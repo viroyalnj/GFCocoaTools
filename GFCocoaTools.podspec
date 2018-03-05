@@ -38,6 +38,7 @@ Pod::Spec.new do |s|
   s.dependency 'SDWebImage'
   s.dependency 'AFNetworking'
   s.dependency 'Masonry'
+  s.dependency 'SSZipArchive'
 
   s.resource_bundles = {
     'Resources' => ['GFCocoaTools/Resources/*.png', 'GFCocoaTools/Resources/*.lproj']
@@ -46,9 +47,5 @@ Pod::Spec.new do |s|
   s.subspec 'Classes' do |ss|
     ss.source_files = 'GFCocoaTools/Classes/*.{h,m}'
   end
-
-# s.subspec 'SSZipArchive' do |ss|
-#   ss.source_files = ['GFCocoaTools/SSZipArchive/*.{h,c,m}','GFCocoaTools/SSZipArchive/aes/*.{h,c,m}','GFCocoaTools/SSZipArchive/minizip/*.{h,c,m}']
-# end
 
 end
