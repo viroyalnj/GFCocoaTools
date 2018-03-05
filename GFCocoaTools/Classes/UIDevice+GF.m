@@ -106,7 +106,7 @@
 
 + (NSString *)appBuildVersion {
     NSDictionary *info = [NSBundle mainBundle].infoDictionary;
-    return [info objectForKey:kCFBundleVersionKey];
+    return [info objectForKey:(__bridge NSString *)kCFBundleVersionKey];
 }
 
 @end
