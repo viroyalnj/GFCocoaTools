@@ -26,6 +26,10 @@
     return [calendar dateFromComponents:components];
 }
 
+- (NSTimeInterval)timeIntervalToNow {
+    return -[self timeIntervalSinceNow];
+}
+
 - (NSDateComponents *)components {
     NSCalendar *calendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierISO8601];
     NSCalendarUnit unit = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;

@@ -12,6 +12,8 @@
 
 @interface NSDate (GF)
 
+@property (readonly) NSTimeInterval timeIntervalToNow;
+
 + (NSDate *)dateWithYear:(NSInteger)year month:(NSInteger)month day:(NSInteger)day
                     hour:(NSInteger)hour minute:(NSInteger)minute second:(NSInteger)second;
 
