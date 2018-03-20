@@ -19,16 +19,40 @@
 }
 
 + (instancetype)colorFromString:(NSString *)string {
-    long long value = 0;
-    sscanf([string cStringUsingEncoding:NSASCIIStringEncoding], "%llx", &value);
-    return [UIColor colorFromHex:value];
+    if (string.length == 0) {
+        return nil;
+    }
+    
+    if (![string containsString:@"0x"]) {
+        string = [@"0x" stringByAppendingString:string];
+    }
+    
+    if (string.length == 8) {
+        long long value = 0;
+        sscanf([string cStringUsingEncoding:NSASCIIStringEncoding], "%llx", &value);
+        return [UIColor colorFromHex:value];
+    }
+    
+    return nil;
 }
 
 + (instancetype)colorAlphaFromString:(NSString *)string {
-    long long value = 0;
-    sscanf([string cStringUsingEncoding:NSASCIIStringEncoding], "%llx", &value);
+    if (string.length == 0) {
+        return nil;
+    }
     
-    return [UIColor colorAlphaFromHex:value];
+    if (![string containsString:@"0x"]) {
+        string = [@"0x" stringByAppendingString:string];
+    }
+    
+    if (string.length == 10) {
+        long long value = 0;
+        sscanf([string cStringUsingEncoding:NSASCIIStringEncoding], "%llx", &value);
+        
+        return [UIColor colorAlphaFromHex:value];
+    }
+    
+    return nil;
 }
 
 - (NSString *)hexStringWithAlpha:(BOOL)alpha {
