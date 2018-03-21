@@ -156,4 +156,108 @@
     return string;
 }
 
+- (NSString *)shengmu {
+    NSString *string = @"zh ch sh b c d f g h j k l m n p q r s t w x y z";
+    NSArray *arr = [string componentsSeparatedByString:@" "];
+    for (NSString *item in arr) {
+        if ([self hasPrefix:item]) {
+            return item;
+        }
+    }
+    
+    return nil;
+}
+
+- (NSString *)yunmu {
+    NSString *shengmu = [self shengmu];
+    NSString *yunmu;
+    if (shengmu) {
+        NSRange range = [self rangeOfString:shengmu];
+        yunmu = [self stringByReplacingCharactersInRange:range withString:@""];
+    }
+    else {
+        yunmu = self;
+    }
+    
+    return yunmu;
+}
+
+- (NSInteger)pinyinDiffWithWord:(NSString *)word {
+    NSString *shengmu1 = [self shengmu];
+    NSString *yunmu1 = [self yunmu];
+    
+    NSString *shengmu2 = [word shengmu];
+    NSString *yunmu2 = [word yunmu];
+    
+    NSInteger value = 0;
+    if (![shengmu1 isEqualToString:shengmu2]) {
+        const NSArray *pairs = @[@[@"z", @"zh"],
+                                 @[@"c", @"ch"],
+                                 @[@"s", @"sh"],
+                                 @[@"l", @"n"],
+                                 @[@"f", @"h"],
+                                 @[@"r", @"l"]];
+        BOOL found = NO;
+        for (NSArray *item in pairs) {
+            if ([item containsObject:shengmu1] && [item containsObject:shengmu2]) {
+                found = YES;
+                value++;
+                break;
+            }
+        }
+        
+        if (!found) {
+            value += 2;
+        }
+    }
+    
+    if (![yunmu1 isEqualToString:yunmu2]) {
+        const NSArray *pairs = @[@[@"an", @"ang", @"en", @"eng", @"un", @"ong"],
+                                 @[@"in", @"ing", @"eng"],
+                                 @[@"i", @"ian", @"ie", @"iao", @"iang"],
+                                 @[@"uan", @"uang"],
+                                 @[@"ian", @"uan"]];
+        BOOL found = NO;
+        for (NSArray *item in pairs) {
+            if ([item containsObject:yunmu1] && [item containsObject:yunmu2]) {
+                found = YES;
+                value++;
+                break;
+            }
+        }
+        
+        if (!found) {
+            value += 2;
+        }
+    }
+    
+    return value;
+}
+
+- (NSInteger)pinyinDiffWithString:(NSString *)string {
+    NSArray *arr1 = [self componentsSeparatedByString:@" "];
+    NSArray *arr2 = [string componentsSeparatedByString:@" "];
+    
+    if (arr1.count != arr2.count) {
+        return 100;
+    }
+    
+    NSInteger index = 0;
+    NSInteger value = 0;
+    while (YES) {
+        if (index >= arr1.count || index >= arr2.count) {
+            break;
+        }
+        
+        NSString *word1 = arr1[index];
+        NSString *word2 = arr2[index];
+        
+        value += [word1 pinyinDiffWithWord:word2];
+        
+        index++;
+    }
+    
+    return value;
+}
+
 @end

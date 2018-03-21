@@ -28,4 +28,6 @@
 
 - (NSString *)pinyin;
 
+- (NSInteger)pinyinDiffWithString:(NSString *)string;
+
 @end
