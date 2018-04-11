@@ -191,7 +191,7 @@
     
     NSInteger value = 0;
     if (![shengmu1 isEqualToString:shengmu2]) {
-        const NSArray *pairs = @[@[@"z", @"zh"],
+        const NSArray *pairs = @[@[@"z", @"zh", @"ch"],
                                  @[@"c", @"ch"],
                                  @[@"s", @"sh"],
                                  @[@"l", @"n"],
