@@ -11,7 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface AFSecurityPolicy (GF)
 
-- (nullable NSSet<NSData *> *)certificatsWithUrl:(nullable NSURL *)url bucket:(NSString *)bucketAddress;
+- (nullable NSSet<NSData *> *)certificatsWithAddress:(NSString *)string;
 
 @end
 

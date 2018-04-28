@@ -10,20 +10,17 @@
 
 @implementation AFSecurityPolicy (GF)
 
-- (NSSet<NSData *> *)certificatsWithUrl:(NSURL *)url bucket:(NSString *)bucketAddress {
-    NSString *scheme = url.scheme;
-    NSString *host = url.host;
-    if ([scheme isEqualToString:@"https"]) {
-        NSURL *sslFolder = [[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask].firstObject;
-        sslFolder = [sslFolder URLByAppendingPathComponent:@"ssl" isDirectory:YES];
+- (NSSet<NSData *> *)certificatsWithAddress:(NSString *)string {
+    NSURL *url = [NSURL URLWithString:string];
+    NSURL *sslFolder = [[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask].firstObject;
+    sslFolder = [sslFolder URLByAppendingPathComponent:@"ssl" isDirectory:YES];
+    if (url) {
         [[NSFileManager defaultManager] createDirectoryAtURL:sslFolder withIntermediateDirectories:YES attributes:nil error:nil];
         
-        NSString *string = [NSString stringWithFormat:@"%@/%@.cer", bucketAddress, host];
-        NSString *key = [NSString stringWithFormat:@"%@.cer", host];
+        NSString *key = [NSString stringWithFormat:@"%@.cer", [string MD5InShort]];
         NSURL *localUrl = [sslFolder URLByAppendingPathComponent:key];
-        NSData *data = [NSData dataWithContentsOfURL:localUrl];
-        if (!data) {
-            data = [NSData dataWithContentsOfURL:[NSURL URLWithString:string]];
+        if (![[NSFileManager defaultManager] fileExistsAtPath:localUrl.path]) {
+            NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:string]];
             if (data) {
                 [data writeToURL:localUrl atomically:YES];
             }
@@ -31,24 +28,22 @@
                 NSLog(@"*** cert file download failed! ***");
             }
         }
-        
-        NSDirectoryEnumerator *enumerator = [[NSFileManager defaultManager] enumeratorAtURL:sslFolder
-                                                                 includingPropertiesForKeys:nil
-                                                                                    options:NSDirectoryEnumerationSkipsHiddenFiles
-                                                                               errorHandler:nil];
-        
-        NSMutableSet *set = [NSMutableSet set];
-        for (NSURL *item in enumerator) {
-            NSData *data = [NSData dataWithContentsOfURL:item];
-            if (data) {
-                [set addObject:data];
-            }
-        }
-        
-        return set.copy;
     }
     
-    return nil;
+    NSDirectoryEnumerator *enumerator = [[NSFileManager defaultManager] enumeratorAtURL:sslFolder
+                                                             includingPropertiesForKeys:nil
+                                                                                options:NSDirectoryEnumerationSkipsHiddenFiles
+                                                                           errorHandler:nil];
+    
+    NSMutableSet *set = [NSMutableSet set];
+    for (NSURL *item in enumerator) {
+        NSData *data = [NSData dataWithContentsOfURL:item];
+        if (data) {
+            [set addObject:data];
+        }
+    }
+    
+    return set.copy;
 }
 
 @end
