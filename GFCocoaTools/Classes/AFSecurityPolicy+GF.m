@@ -20,13 +20,16 @@
         NSString *key = [NSString stringWithFormat:@"%@.cer", [string MD5InShort]];
         NSURL *localUrl = [sslFolder URLByAppendingPathComponent:key];
         if (![[NSFileManager defaultManager] fileExistsAtPath:localUrl.path]) {
-            NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:string]];
-            if (data) {
-                [data writeToURL:localUrl atomically:YES];
-            }
-            else {
-                NSLog(@"*** cert file download failed! ***");
-            }
+            AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] init];
+            
+            NSURLSessionDownloadTask *task = [manager downloadTaskWithRequest:[NSURLRequest requestWithURL:url]
+                                                                     progress:nil
+                                                                  destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
+                                                                      return localUrl;
+                                                                  }
+                                                            completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
+                                                            }];
+            [task resume];
         }
     }
     
