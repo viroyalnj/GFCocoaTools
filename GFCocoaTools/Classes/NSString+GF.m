@@ -216,7 +216,8 @@
                                  @[@"in", @"ing", @"eng"],
                                  @[@"i", @"ian", @"ie", @"iao", @"iang"],
                                  @[@"uan", @"uang"],
-                                 @[@"ian", @"uan"]];
+                                 @[@"ian", @"uan"],
+                                 @[@"i", @"v"]];
         BOOL found = NO;
         for (NSArray *item in pairs) {
             if ([item containsObject:yunmu1] && [item containsObject:yunmu2]) {
