@@ -22,6 +22,8 @@
 
 - (NSString *)sha1;
 
+- (NSString *)hmacWithKey:(NSString *)key;
+
 - (BOOL)isValidPhoneNumber;
 
 - (BOOL)isValidMobileNumber;
