@@ -234,8 +234,13 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
     return newImage;
 }
 
+- (UIColor *)averageColor {
+    return [self averageColorWithAlpha:1.0];
+}
+
 - (UIColor *)averageColorWithAlpha:(CGFloat)alpha {
     
+    //Work within the RGB colorspoace
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
     unsigned char rgba[4];
     CGContextRef context = CGBitmapContextCreate(rgba, 1, 1, 8, 4, colorSpace, kCGImageAlphaPremultipliedLast | kCGBitmapByteOrder32Big);
@@ -259,7 +264,9 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
         //Return average color
         return averageColor;
     }
+    
     else {
+        
         //Get average
         UIColor *averageColor = [UIColor colorWithRed:((CGFloat)rgba[0])/255.0 green:((CGFloat)rgba[1])/255.0 blue:((CGFloat)rgba[2])/255.0 alpha:alpha];
         

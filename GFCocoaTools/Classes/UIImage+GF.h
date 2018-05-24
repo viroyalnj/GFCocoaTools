@@ -34,7 +34,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (UIImage *)imageWithAlpha:(CGFloat)alpha;
 
-- (UIColor *)averageColorWithAlpha:(CGFloat)alpha;
+- (UIColor *)averageColor;
 
 - (nullable NSString *)QR;
 
