@@ -20,7 +20,7 @@ typedef enum {
 
 + (UIImage *)imageWithColor:(UIColor *)color size:(CGSize)size {
     CGRect rect = CGRectMake(0.0f, 0.0f, size.width, size.height);
-    UIGraphicsBeginImageContextWithOptions(size, NO, 0.0);
+    UIGraphicsBeginImageContextWithOptions(size, NO, [UIScreen mainScreen].scale);
     CGContextRef context = UIGraphicsGetCurrentContext();
     
     CGContextSetFillColorWithColor(context, [color CGColor]);
@@ -39,7 +39,7 @@ typedef enum {
     UIImage *image = [UIImage imageWithColor:color size:size];
     
     CGRect rect = CGRectMake(0, 0, size.width, size.height);
-    UIGraphicsBeginImageContextWithOptions(size, NO, 0);
+    UIGraphicsBeginImageContextWithOptions(size, NO, [UIScreen mainScreen].scale);
     
     // Add a clip before drawing anything, in the shape of an rounded rect
     [[UIBezierPath bezierPathWithRoundedRect:rect
@@ -213,7 +213,7 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 }
 
 - (UIImage *)imageWithAlpha:(CGFloat)alpha {
-    UIGraphicsBeginImageContextWithOptions(self.size, NO, 0.0f);
+    UIGraphicsBeginImageContextWithOptions(self.size, NO, [UIScreen mainScreen].scale);
     
     CGContextRef ctx = UIGraphicsGetCurrentContext();
     CGRect area = CGRectMake(0, 0, self.size.width, self.size.height);
@@ -326,7 +326,7 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
     UIImage *image = [UIImage imageWithColor:color size:size];
     
     CGRect rect = CGRectMake(0, 0, size.width, size.height);
-    UIGraphicsBeginImageContextWithOptions(size, NO, 0);
+    UIGraphicsBeginImageContextWithOptions(size, NO, [UIScreen mainScreen].scale);
     
     // Add a clip before drawing anything, in the shape of an rounded rect
     [[UIBezierPath bezierPathWithRoundedRect:rect
