@@ -13,3 +13,6 @@
 - (UIImage *)snapshotImage;
 
 @end
+
+extern CGPoint CGRectGetCenter(CGRect rect);
+extern CGRect CGRectMakeWithCenterAndSize(CGPoint center, CGSize size);

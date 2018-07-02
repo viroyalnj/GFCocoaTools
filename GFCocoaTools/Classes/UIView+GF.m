@@ -23,3 +23,16 @@
 }
 
 @end
+
+CGPoint CGRectGetCenter(CGRect rect) {
+    return CGPointMake(CGRectGetMaxX(rect) / 2, CGRectGetMaxY(rect) / 2);
+}
+
+CGRect CGRectMakeWithCenterAndSize(CGPoint center, CGSize size) {
+    CGRect rect = CGRectMake(0, 0, size.width, size.height);
+    rect.origin.x = center.x - size.width / 2;
+    rect.origin.y = center.y - size.height / 2;
+    
+    return rect;
+}
+
