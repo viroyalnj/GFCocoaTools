@@ -32,5 +32,7 @@
 #import "AFSecurityPolicy+GF.h"
 #import "UIBarButtonItem+GF.h"
 #import "NSFileManager+GF.h"
+#import "ArchiveManager.h"
+#import "GFMessageHUD.h"
 
 #endif /* GFCocoaTools_h */
