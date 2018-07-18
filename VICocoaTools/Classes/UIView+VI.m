@@ -1,14 +1,14 @@
 //
-//  UIView+GF.m
+//  UIView+VI.m
 //  GFCocoaTools
 //
 //  Created by guofengld on 2017/3/14.
 //  Copyright © 2017年 guofengld@gmail.com. All rights reserved.
 //
 
-#import "UIView+GF.h"
+#import "UIView+VI.h"
 
-@implementation UIView (GF)
+@implementation UIView (VI)
 
 - (UIImage *)snapshotImage {
     NSAssert(CGRectGetWidth(self.bounds) > 0 && CGRectGetHeight(self.bounds) > 0, @"size must be greater than zero");

@@ -1,26 +1,26 @@
 //
-//  GFMessageHUD.m
+//  VIMessageHUD.m
 //  AFNetworking
 //
 //  Created by 熊国锋 on 2018/7/18.
 //
 
-#import "GFMessageHUD.h"
+#import "VIMessageHUD.h"
 
-@implementation GFMessageHUD
+@implementation VIMessageHUD
 
-+ (GFMessageHUD *)showHudOn:(UIView *)view
++ (VIMessageHUD *)showHudOn:(UIView *)view
                       title:(nullable NSString *)title
                     message:(nullable NSString *)message
                   delayHide:(BOOL)delayHide
-                 completion:(nullable GFMessageHUDCompletionBlock)completionBlock {
+                 completion:(nullable VIMessageHUDCompletionBlock)completionBlock {
     return nil;
 }
 
 + (void)finishHudWithResult:(BOOL)success
-                        hud:(GFMessageHUD *)hud
+                        hud:(VIMessageHUD *)hud
                   labelText:(nullable NSString *)labelText
-                 completion:(nullable GFMessageHUDCompletionBlock)completionBlock {
+                 completion:(nullable VIMessageHUDCompletionBlock)completionBlock {
     
 }
 

@@ -1,5 +1,5 @@
 //
-//  UIView+GF.h
+//  UIView+VI.h
 //  GFCocoaTools
 //
 //  Created by guofengld on 2017/3/14.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIView (GF)
+@interface UIView (VI)
 
 - (UIImage *)snapshotImage;
 

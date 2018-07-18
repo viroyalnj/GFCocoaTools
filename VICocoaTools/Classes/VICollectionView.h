@@ -1,5 +1,5 @@
 //
-//  GFCollectionView.h
+//  VICollectionView.h
 //  GFCocoaTools
 //
 //  Created by guofengld on 2017/3/14.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GFCollectionView : UICollectionView
+@interface VICollectionView : UICollectionView
 
 - (CGSize)sizeForItemWithIdentifier:(NSString *)identifier
                           indexPath:(NSIndexPath *)indexPath

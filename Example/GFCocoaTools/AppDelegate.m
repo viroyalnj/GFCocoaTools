@@ -1,6 +1,6 @@
 //
 //  AppDelegate.m
-//  GFCocoaTools
+//  VICocoaTools
 //
 //  Created by guofengld on 05/10/2017.
 //  Copyright (c) 2017 guofengld@github.com. All rights reserved.
@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 
-@import GFCocoaTools;
+@import VICocoaTools;
 
 @implementation AppDelegate
 

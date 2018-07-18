@@ -1,5 +1,5 @@
 #
-# Be sure to run `pod lib lint GFCocoaTools.podspec' to ensure this is a
+# Be sure to run `pod lib lint VICocoaTools.podspec' to ensure this is a
 # valid spec before submitting.
 #
 # Any lines starting with a # are optional, but their use is encouraged
@@ -7,10 +7,10 @@
 #
 
 Pod::Spec.new do |s|
-  s.name             = 'GFCocoaTools'
+  s.name             = 'VICocoaTools'
   s.version          = '0.2.1'
   s.summary          = '自己使用的一个工具类.'
-  s.module_name      = 'GFCocoaTools'
+  s.module_name      = 'VICocoaTools'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -22,17 +22,17 @@ Pod::Spec.new do |s|
 平时使用的一些工具类，为了方便，使用pod 打包起来，方便跨项目使用
                        DESC
 
-  s.homepage         = 'https://github.com/guofengld/GFCocoaTools'
+  s.homepage         = 'https://github.com/viroyalnj/VICocoaTools'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'guofengld' => 'guofengld@gmail.com' }
-  s.source           = { :git => 'https://github.com/guofengld/GFCocoaTools.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/viroyalnj/VICocoaTools.git', :tag => s.version.to_s }
 # s.social_media_url = 'https://twitter.com/guofengjd'
 
   s.ios.deployment_target = '8.1'
   s.requires_arc = true
 
-  s.source_files = 'GFCocoaTools/GFCocoaTools.h'
+  s.source_files = 'VICocoaTools/VICocoaTools.h'
 
   s.dependency 'MBProgressHUD'
   s.dependency 'SDWebImage'
@@ -41,11 +41,11 @@ Pod::Spec.new do |s|
   s.dependency 'SSZipArchive'
 
   s.resource_bundles = {
-    'Resources' => ['GFCocoaTools/Resources/*.png', 'GFCocoaTools/Resources/*.lproj']
+    'Resources' => ['VICocoaTools/Resources/*.png', 'VICocoaTools/Resources/*.lproj']
   }
 
   s.subspec 'Classes' do |ss|
-    ss.source_files = 'GFCocoaTools/Classes/*.{h,m}'
+    ss.source_files = 'VICocoaTools/Classes/*.{h,m}'
   end
 
 end

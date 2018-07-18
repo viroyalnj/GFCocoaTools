@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UITableViewCell (GF)
+@interface UITableViewCell (VI)
 
 + (NSString *)reuseIdentifier;
 

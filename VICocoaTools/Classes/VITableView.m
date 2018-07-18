@@ -1,17 +1,17 @@
 //
-//  GFTableView.m
+//  VITableView.m
 //  GFCocoaTools
 //
 //  Created by guofengld on 2017/3/14.
 //  Copyright © 2017年 guofengld@gmail.com. All rights reserved.
 //
 
-#import "GFTableView.h"
+#import "VITableView.h"
 #import <objc/runtime.h>
 
 @import Masonry;
 
-@interface GFTableView ()
+@interface VITableView ()
 
 @property (nonatomic, strong)   NSMutableArray          *cache;
 @property (nonatomic, strong)   NSMutableDictionary     *tempCells;
@@ -25,7 +25,7 @@
 
 @end
 
-@implementation GFTableView
+@implementation VITableView
 
 - (CGFloat)heightForRowWithIdentifier:(NSString *)identifier
                             indexPath:(NSIndexPath *)indexPath

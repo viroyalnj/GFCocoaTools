@@ -1,5 +1,5 @@
 //
-//  GFPinField.h
+//  VIPinField.h
 //  Pods
 //
 //  Created by 熊国锋 on 2017/3/14.
@@ -11,19 +11,19 @@
 
 @import Masonry;
 
-@class GFPinField;
+@class VIPinField;
 
-@protocol GFPinFieldDelegate <NSObject>
+@protocol VIPinFieldDelegate <NSObject>
 
-- (void)pinTextDidChange:(GFPinField *)pinField;
+- (void)pinTextDidChange:(VIPinField *)pinField;
 
 @end
 
-@interface GFPinField : UIView < UIKeyInput >
+@interface VIPinField : UIView < UIKeyInput >
 
 - (instancetype)initWithFrame:(CGRect)frame digitCount:(NSInteger)digitCount;
 
-@property (nonatomic, weak) id<GFPinFieldDelegate>  delegate;
+@property (nonatomic, weak) id<VIPinFieldDelegate>  delegate;
 
 @property (nonatomic, readonly)         NSInteger       digitCount;
 @property (nonatomic, copy)             NSString        *text;

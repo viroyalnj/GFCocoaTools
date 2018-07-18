@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		25569F3148ADB97736C79FA0 /* Pods_GFCocoaTools_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62BE8B25811470853DB6B469 /* Pods_GFCocoaTools_Example.framework */; };
+		1AE4EE06D6A4FB14EC68B514 /* Pods_VICocoaTools_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0A7110563AC86A1950E1512 /* Pods_VICocoaTools_Example.framework */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -38,30 +38,33 @@
 		026A338B3C1359C2624F1493 /* Pods-GFCocoaTools_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GFCocoaTools_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-GFCocoaTools_Example/Pods-GFCocoaTools_Example.release.xcconfig"; sourceTree = "<group>"; };
 		027DE5FBF1628A055F3B5BA7 /* libPods-GFCocoaTools_Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GFCocoaTools_Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		56E3D37227E935B9C3C16055 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		6003F58A195388D20070C39A /* GFCocoaTools_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GFCocoaTools_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6003F58A195388D20070C39A /* VICocoaTools_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VICocoaTools_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		6003F591195388D20070C39A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		6003F595195388D20070C39A /* GFCocoaTools-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GFCocoaTools-Info.plist"; sourceTree = "<group>"; };
+		6003F595195388D20070C39A /* VICocoaTools-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "VICocoaTools-Info.plist"; sourceTree = "<group>"; };
 		6003F597195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6003F599195388D20070C39A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		6003F59B195388D20070C39A /* GFCocoaTools-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GFCocoaTools-Prefix.pch"; sourceTree = "<group>"; };
+		6003F59B195388D20070C39A /* VICocoaTools-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VICocoaTools-Prefix.pch"; sourceTree = "<group>"; };
 		6003F59C195388D20070C39A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6003F59D195388D20070C39A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		6003F5A5195388D20070C39A /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		6003F5A6195388D20070C39A /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		6003F5A8195388D20070C39A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		6003F5AE195388D20070C39A /* GFCocoaTools_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GFCocoaTools_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6003F5AE195388D20070C39A /* VICocoaTools_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VICocoaTools_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F5AF195388D20070C39A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		6003F5B7195388D20070C39A /* Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tests-Info.plist"; sourceTree = "<group>"; };
 		6003F5B9195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6003F5BB195388D20070C39A /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
+		603D0C977B0793E7A3AF6113 /* Pods-VICocoaTools_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VICocoaTools_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VICocoaTools_Example/Pods-VICocoaTools_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		62BE8B25811470853DB6B469 /* Pods_GFCocoaTools_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GFCocoaTools_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C0E9BA679ECEE930C5FA6CF /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		77D5B27B32AB19D63D0A9F51 /* GFCocoaTools.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = GFCocoaTools.podspec; path = ../GFCocoaTools.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		77D5B27B32AB19D63D0A9F51 /* VICocoaTools.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = VICocoaTools.podspec; path = ../VICocoaTools.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A16924D9A81D15F5374FDE21 /* Pods-GFCocoaTools_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GFCocoaTools_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GFCocoaTools_Example/Pods-GFCocoaTools_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		ADD059B36E29DF1B253C9F6D /* Pods-VICocoaTools_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VICocoaTools_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-VICocoaTools_Example/Pods-VICocoaTools_Example.release.xcconfig"; sourceTree = "<group>"; };
 		AEF11B791EC2BD1D0058F297 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F0A7110563AC86A1950E1512 /* Pods_VICocoaTools_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VICocoaTools_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,7 +75,7 @@
 				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
 				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
-				25569F3148ADB97736C79FA0 /* Pods_GFCocoaTools_Example.framework in Frameworks */,
+				1AE4EE06D6A4FB14EC68B514 /* Pods_VICocoaTools_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,7 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				60FF7A9C1954A5C5007DD14C /* Podspec Metadata */,
-				6003F593195388D20070C39A /* Example for GFCocoaTools */,
+				6003F593195388D20070C39A /* Example for VICocoaTools */,
 				6003F5B5195388D20070C39A /* Tests */,
 				6003F58C195388D20070C39A /* Frameworks */,
 				6003F58B195388D20070C39A /* Products */,
@@ -104,8 +107,8 @@
 		6003F58B195388D20070C39A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6003F58A195388D20070C39A /* GFCocoaTools_Example.app */,
-				6003F5AE195388D20070C39A /* GFCocoaTools_Tests.xctest */,
+				6003F58A195388D20070C39A /* VICocoaTools_Example.app */,
+				6003F5AE195388D20070C39A /* VICocoaTools_Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -119,11 +122,12 @@
 				6003F5AF195388D20070C39A /* XCTest.framework */,
 				027DE5FBF1628A055F3B5BA7 /* libPods-GFCocoaTools_Tests.a */,
 				62BE8B25811470853DB6B469 /* Pods_GFCocoaTools_Example.framework */,
+				F0A7110563AC86A1950E1512 /* Pods_VICocoaTools_Example.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		6003F593195388D20070C39A /* Example for GFCocoaTools */ = {
+		6003F593195388D20070C39A /* Example for VICocoaTools */ = {
 			isa = PBXGroup;
 			children = (
 				6003F59C195388D20070C39A /* AppDelegate.h */,
@@ -134,17 +138,17 @@
 				AEF11B791EC2BD1D0058F297 /* LaunchScreen.storyboard */,
 				6003F594195388D20070C39A /* Supporting Files */,
 			);
-			name = "Example for GFCocoaTools";
+			name = "Example for VICocoaTools";
 			path = GFCocoaTools;
 			sourceTree = "<group>";
 		};
 		6003F594195388D20070C39A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				6003F595195388D20070C39A /* GFCocoaTools-Info.plist */,
+				6003F595195388D20070C39A /* VICocoaTools-Info.plist */,
 				6003F596195388D20070C39A /* InfoPlist.strings */,
 				6003F599195388D20070C39A /* main.m */,
-				6003F59B195388D20070C39A /* GFCocoaTools-Prefix.pch */,
+				6003F59B195388D20070C39A /* VICocoaTools-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -171,7 +175,7 @@
 		60FF7A9C1954A5C5007DD14C /* Podspec Metadata */ = {
 			isa = PBXGroup;
 			children = (
-				77D5B27B32AB19D63D0A9F51 /* GFCocoaTools.podspec */,
+				77D5B27B32AB19D63D0A9F51 /* VICocoaTools.podspec */,
 				6C0E9BA679ECEE930C5FA6CF /* README.md */,
 				56E3D37227E935B9C3C16055 /* LICENSE */,
 			);
@@ -183,6 +187,8 @@
 			children = (
 				A16924D9A81D15F5374FDE21 /* Pods-GFCocoaTools_Example.debug.xcconfig */,
 				026A338B3C1359C2624F1493 /* Pods-GFCocoaTools_Example.release.xcconfig */,
+				603D0C977B0793E7A3AF6113 /* Pods-VICocoaTools_Example.debug.xcconfig */,
+				ADD059B36E29DF1B253C9F6D /* Pods-VICocoaTools_Example.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -190,29 +196,28 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6003F589195388D20070C39A /* GFCocoaTools_Example */ = {
+		6003F589195388D20070C39A /* VICocoaTools_Example */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6003F5BF195388D20070C39A /* Build configuration list for PBXNativeTarget "GFCocoaTools_Example" */;
+			buildConfigurationList = 6003F5BF195388D20070C39A /* Build configuration list for PBXNativeTarget "VICocoaTools_Example" */;
 			buildPhases = (
 				CE7C6D7CAB09DFF8FC7E4DAC /* [CP] Check Pods Manifest.lock */,
 				6003F586195388D20070C39A /* Sources */,
 				6003F587195388D20070C39A /* Frameworks */,
 				6003F588195388D20070C39A /* Resources */,
 				B0E1AE16C406FA4D28A92ACA /* [CP] Embed Pods Frameworks */,
-				F38940739BAEE1DD3CD00368 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = GFCocoaTools_Example;
+			name = VICocoaTools_Example;
 			productName = GFCocoaTools;
-			productReference = 6003F58A195388D20070C39A /* GFCocoaTools_Example.app */;
+			productReference = 6003F58A195388D20070C39A /* VICocoaTools_Example.app */;
 			productType = "com.apple.product-type.application";
 		};
-		6003F5AD195388D20070C39A /* GFCocoaTools_Tests */ = {
+		6003F5AD195388D20070C39A /* VICocoaTools_Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6003F5C2195388D20070C39A /* Build configuration list for PBXNativeTarget "GFCocoaTools_Tests" */;
+			buildConfigurationList = 6003F5C2195388D20070C39A /* Build configuration list for PBXNativeTarget "VICocoaTools_Tests" */;
 			buildPhases = (
 				6003F5AA195388D20070C39A /* Sources */,
 				6003F5AB195388D20070C39A /* Frameworks */,
@@ -223,9 +228,9 @@
 			dependencies = (
 				6003F5B4195388D20070C39A /* PBXTargetDependency */,
 			);
-			name = GFCocoaTools_Tests;
+			name = VICocoaTools_Tests;
 			productName = GFCocoaToolsTests;
-			productReference = 6003F5AE195388D20070C39A /* GFCocoaTools_Tests.xctest */;
+			productReference = 6003F5AE195388D20070C39A /* VICocoaTools_Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -235,7 +240,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = GF;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "guofengld@gmail.com";
 				TargetAttributes = {
 					6003F589195388D20070C39A = {
@@ -246,7 +251,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 6003F585195388D10070C39A /* Build configuration list for PBXProject "GFCocoaTools" */;
+			buildConfigurationList = 6003F585195388D10070C39A /* Build configuration list for PBXProject "VICocoaTools" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -259,8 +264,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6003F589195388D20070C39A /* GFCocoaTools_Example */,
-				6003F5AD195388D20070C39A /* GFCocoaTools_Tests */,
+				6003F589195388D20070C39A /* VICocoaTools_Example */,
+				6003F5AD195388D20070C39A /* VICocoaTools_Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -293,13 +298,15 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-GFCocoaTools_Example/Pods-GFCocoaTools_Example-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-VICocoaTools_Example/Pods-VICocoaTools_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/GFCocoaTools/GFCocoaTools.framework",
 				"${BUILT_PRODUCTS_DIR}/GFPhotoBrowser/GFPhotoBrowser.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SSZipArchive/SSZipArchive.framework",
+				"${BUILT_PRODUCTS_DIR}/VICocoaTools/VICocoaTools.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -309,10 +316,12 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SSZipArchive.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/VICocoaTools.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GFCocoaTools_Example/Pods-GFCocoaTools_Example-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VICocoaTools_Example/Pods-VICocoaTools_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CE7C6D7CAB09DFF8FC7E4DAC /* [CP] Check Pods Manifest.lock */ = {
@@ -326,31 +335,11 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-GFCocoaTools_Example-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-VICocoaTools_Example-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F38940739BAEE1DD3CD00368 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-GFCocoaTools_Example/Pods-GFCocoaTools_Example-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/GFCocoaTools/GFCocoaTools.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/GFPhotoBrowser/GFPhotoBrowser.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GFCocoaTools.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GFPhotoBrowser.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GFCocoaTools_Example/Pods-GFCocoaTools_Example-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -379,7 +368,7 @@
 /* Begin PBXTargetDependency section */
 		6003F5B4195388D20070C39A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6003F589195388D20070C39A /* GFCocoaTools_Example */;
+			target = 6003F589195388D20070C39A /* VICocoaTools_Example */;
 			targetProxy = 6003F5B3195388D20070C39A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -416,12 +405,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -467,12 +458,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -501,15 +494,30 @@
 		};
 		6003F5C0195388D20070C39A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A16924D9A81D15F5374FDE21 /* Pods-GFCocoaTools_Example.debug.xcconfig */;
+			baseConfigurationReference = 603D0C977B0793E7A3AF6113 /* Pods-VICocoaTools_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 6K8653KLAJ;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "GFCocoaTools/GFCocoaTools-Prefix.pch";
-				INFOPLIST_FILE = "GFCocoaTools/GFCocoaTools-Info.plist";
+				GCC_PREFIX_HEADER = "GFCocoaTools/VICocoaTools-Prefix.pch";
+				INFOPLIST_FILE = "GFCocoaTools/VICocoaTools-Info.plist";
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"AFNetworking\"",
+					"-framework",
+					"\"GFPhotoBrowser\"",
+					"-framework",
+					"\"MBProgressHUD\"",
+					"-framework",
+					"\"Masonry\"",
+					"-framework",
+					"\"SDWebImage\"",
+					"-framework",
+					"\"SSZipArchive\"",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.VICocoaTools-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -517,15 +525,30 @@
 		};
 		6003F5C1195388D20070C39A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 026A338B3C1359C2624F1493 /* Pods-GFCocoaTools_Example.release.xcconfig */;
+			baseConfigurationReference = ADD059B36E29DF1B253C9F6D /* Pods-VICocoaTools_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 6K8653KLAJ;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "GFCocoaTools/GFCocoaTools-Prefix.pch";
-				INFOPLIST_FILE = "GFCocoaTools/GFCocoaTools-Info.plist";
+				GCC_PREFIX_HEADER = "GFCocoaTools/VICocoaTools-Prefix.pch";
+				INFOPLIST_FILE = "GFCocoaTools/VICocoaTools-Info.plist";
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"AFNetworking\"",
+					"-framework",
+					"\"GFPhotoBrowser\"",
+					"-framework",
+					"\"MBProgressHUD\"",
+					"-framework",
+					"\"Masonry\"",
+					"-framework",
+					"\"SDWebImage\"",
+					"-framework",
+					"\"SSZipArchive\"",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.VICocoaTools-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -549,7 +572,7 @@
 				INFOPLIST_FILE = "Tests/Tests-Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GFCocoaTools_Example.app/GFCocoaTools_Example";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VICocoaTools_Example.app/VICocoaTools_Example";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Debug;
@@ -568,7 +591,7 @@
 				INFOPLIST_FILE = "Tests/Tests-Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GFCocoaTools_Example.app/GFCocoaTools_Example";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VICocoaTools_Example.app/VICocoaTools_Example";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
@@ -576,7 +599,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6003F585195388D10070C39A /* Build configuration list for PBXProject "GFCocoaTools" */ = {
+		6003F585195388D10070C39A /* Build configuration list for PBXProject "VICocoaTools" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6003F5BD195388D20070C39A /* Debug */,
@@ -585,7 +608,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6003F5BF195388D20070C39A /* Build configuration list for PBXNativeTarget "GFCocoaTools_Example" */ = {
+		6003F5BF195388D20070C39A /* Build configuration list for PBXNativeTarget "VICocoaTools_Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6003F5C0195388D20070C39A /* Debug */,
@@ -594,7 +617,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6003F5C2195388D20070C39A /* Build configuration list for PBXNativeTarget "GFCocoaTools_Tests" */ = {
+		6003F5C2195388D20070C39A /* Build configuration list for PBXNativeTarget "VICocoaTools_Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6003F5C3195388D20070C39A /* Debug */,

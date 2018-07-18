@@ -1,22 +1,22 @@
 //
-//  GFCollectionView.m
+//  VICollectionView.m
 //  GFCocoaTools
 //
 //  Created by guofengld on 2017/3/14.
 //  Copyright © 2017年 guofengld@gmail.com. All rights reserved.
 //
 
-#import "GFCollectionView.h"
+#import "VICollectionView.h"
 #import <objc/runtime.h>
 
-@interface GFCollectionView ()
+@interface VICollectionView ()
 
 @property (nonatomic, strong)   NSMutableArray          *cache;
 @property (nonatomic, strong)   NSMutableDictionary     *tempCells;
 
 @end
 
-@implementation GFCollectionView
+@implementation VICollectionView
 
 - (CGSize)sizeForItemWithIdentifier:(NSString *)identifier
                           indexPath:(NSIndexPath *)indexPath

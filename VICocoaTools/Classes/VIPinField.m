@@ -1,12 +1,12 @@
 //
-//  GFPinField.m
+//  VIPinField.m
 //  Pods
 //
 //  Created by 熊国锋 on 2017/3/14.
 //
 //
 
-#import "GFPinField.h"
+#import "VIPinField.h"
 
 #define CONTENT_VIEW    self.contentView
 
@@ -68,9 +68,9 @@
 
 @end
 
-#pragma mark - GFPinField
+#pragma mark - VIPinField
 
-@interface GFPinField () < UICollectionViewDataSource, UICollectionViewDelegateFlowLayout >
+@interface VIPinField () < UICollectionViewDataSource, UICollectionViewDelegateFlowLayout >
 
 @property (nonatomic, strong) NSMutableString       *pinText;
 @property (assign)            NSInteger             digitCount;
@@ -79,7 +79,7 @@
 
 @end
 
-@implementation GFPinField
+@implementation VIPinField
 
 - (instancetype)initWithFrame:(CGRect)frame digitCount:(NSInteger)digitCount {
     if (self = [super initWithFrame:frame]) {

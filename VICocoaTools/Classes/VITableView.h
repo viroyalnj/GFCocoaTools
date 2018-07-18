@@ -1,5 +1,5 @@
 //
-//  GFTableView.h
+//  VITableView.h
 //  GFCocoaTools
 //
 //  Created by guofengld on 2017/3/14.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GFTableView : UITableView
+@interface VITableView : UITableView
 
 - (CGFloat)heightForRowWithIdentifier:(NSString *)identifier
                             indexPath:(NSIndexPath *)indexPath
