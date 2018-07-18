@@ -9,17 +9,23 @@
 
 typedef void (^VIMessageHUDCompletionBlock)(void);
 
+@interface VIMessageAction : NSObject
+
++ (instancetype)actionWithTitle:(NSString *)title completion:(VIMessageHUDCompletionBlock)completion;
+
+@end
+
 @interface VIMessageHUD : UIView
+
+@property (nonatomic, copy) VIMessageHUDCompletionBlock     completionBlock;
 
 + (VIMessageHUD *)showHudOn:(UIView *)view
                       title:(nullable NSString *)title
                     message:(nullable NSString *)message
+                    actions:(nullable NSArray<VIMessageAction *> *)actions
                   delayHide:(BOOL)delayHide
                  completion:(nullable VIMessageHUDCompletionBlock)completionBlock;
 
-+ (void)finishHudWithResult:(BOOL)success
-                        hud:(VIMessageHUD *)hud
-                  labelText:(nullable NSString *)labelText
-                 completion:(nullable VIMessageHUDCompletionBlock)completionBlock;
+- (void)hideAnimated:(BOOL)animated;
 
 @end

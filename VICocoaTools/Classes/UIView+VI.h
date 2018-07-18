@@ -10,6 +10,10 @@
 
 @interface UIView (VI)
 
+@property (nonatomic, assign) CGFloat top;
+@property (nonatomic, assign) CGFloat bottom;
+@property (nonatomic, assign) CGFloat height;
+
 - (UIImage *)snapshotImage;
 
 @end

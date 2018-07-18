@@ -10,6 +10,36 @@
 
 @implementation UIView (VI)
 
+- (CGFloat)top {
+    return CGRectGetMinY(self.frame);
+}
+
+- (void)setTop:(CGFloat)top {
+    CGRect rect = self.frame;
+    rect.origin.y = top;
+    self.frame = rect;
+}
+
+- (CGFloat)bottom {
+    return CGRectGetMaxY(self.frame);
+}
+
+- (void)setBottom:(CGFloat)bottom {
+    CGRect rect = self.frame;
+    rect.origin.y = bottom - CGRectGetHeight(rect);
+    self.frame = rect;
+}
+
+- (CGFloat)height {
+    return CGRectGetHeight(self.frame);
+}
+
+- (void)setHeight:(CGFloat)height {
+    CGRect rect = self.frame;
+    rect.size.height = height;
+    self.frame = rect;
+}
+
 - (UIImage *)snapshotImage {
     NSAssert(CGRectGetWidth(self.bounds) > 0 && CGRectGetHeight(self.bounds) > 0, @"size must be greater than zero");
     UIGraphicsBeginImageContextWithOptions(self.bounds.size, NO, [UIScreen mainScreen].scale);
