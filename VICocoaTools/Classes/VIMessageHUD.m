@@ -211,10 +211,9 @@ const NSTimeInterval MESSAGE_DELAY_INVERTAL = 1.5;
     
     self.toolBar.hidden = self.actions.count == 0;
     if (self.actions.count) {
-        UIBarButtonItem *flex = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+        UIBarButtonItem *flex = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
         NSMutableArray *arr = @[flex].mutableCopy;
         
-        [arr addObject:flex];
         for (VIMessageAction *action in self.actions) {
             UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:action.title
                                                                      style:UIBarButtonItemStyleDone
@@ -222,7 +221,6 @@ const NSTimeInterval MESSAGE_DELAY_INVERTAL = 1.5;
                                                                     action:@selector(touchToolBarButton:)];
             [arr addObject:item];
         }
-        [arr addObject:flex];
         
         self.toolBar.items = arr.copy;
     }
