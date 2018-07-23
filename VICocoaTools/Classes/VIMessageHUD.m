@@ -37,7 +37,7 @@ const NSTimeInterval MESSAGE_DELAY_INVERTAL = 1.5;
 
 @end
 
-@interface VIBackgroundView : UIView
+@interface VIBackgroundView : UIButton
 
 @property (nonatomic, assign) CGFloat   destAlpha;
 
@@ -301,9 +301,17 @@ const NSTimeInterval MESSAGE_DELAY_INVERTAL = 1.5;
     self.backgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self addSubview:self.backgroundView];
     
+    [self.backgroundView addTarget:self
+                            action:@selector(touchBackground)
+                  forControlEvents:UIControlEventTouchUpInside];
+    
     self.contentView = [VIContentView new];
     self.contentView.delegate = self;
     [self addSubview:self.contentView];
+}
+
+- (void)touchBackground {
+    [self hideAnimated:YES];
 }
 
 - (void)showAnimated:(BOOL)animated {
