@@ -240,6 +240,15 @@ const NSTimeInterval MESSAGE_DELAY_INVERTAL = 1.5;
     [self.delegate barItemClicked:item];
 }
 
+- (void)setBounds:(CGRect)bounds {
+    if (self.preferredMaxLayoutWidth != CGRectGetWidth(bounds) - self.padding * 2) {
+        self.preferredMaxLayoutWidth = CGRectGetWidth(bounds) - self.padding * 2;
+        [self invalidateIntrinsicContentSize];
+    }
+    
+    [super setBounds:bounds];
+}
+
 @end
 
 @interface VIMessageHUD () < VIContentViewDelegate >
@@ -260,12 +269,15 @@ const NSTimeInterval MESSAGE_DELAY_INVERTAL = 1.5;
                   delayHide:(BOOL)delayHide
                  completion:(nullable VIMessageHUDCompletionBlock)completionBlock {
     
-    VIMessageHUD *hud = [[self alloc] initWithView:view];
+    VIMessageHUD *hud = [self new];
     hud.contentView.titleString = title;
     hud.contentView.detailString = message;
     hud.contentView.actions = actions;
     
     [view addSubview:hud];
+    [hud mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(view);
+    }];
     
     [hud showAnimated:YES];
     
@@ -276,10 +288,6 @@ const NSTimeInterval MESSAGE_DELAY_INVERTAL = 1.5;
     hud.completionBlock = completionBlock;
     
     return hud;
-}
-
-- (instancetype)initWithView:(UIView *)view {
-    return [self initWithFrame:view.bounds];
 }
 
 - (instancetype)initWithFrame:(CGRect)frame {
@@ -297,9 +305,11 @@ const NSTimeInterval MESSAGE_DELAY_INVERTAL = 1.5;
 }
 
 - (void)setupViews {
-    self.backgroundView = [[VIBackgroundView alloc] initWithFrame:self.bounds];
-    self.backgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    self.backgroundView = [VIBackgroundView new];
     [self addSubview:self.backgroundView];
+    [self.backgroundView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self);
+    }];
     
     [self.backgroundView addTarget:self
                             action:@selector(touchBackground)
@@ -318,22 +328,21 @@ const NSTimeInterval MESSAGE_DELAY_INVERTAL = 1.5;
     [self.backgroundView showAnimated:animated];
     
     NSInteger padding = 16;
-    CGRect rect = CGRectInset(self.bounds, padding, padding);
-    self.contentView.preferredMaxLayoutWidth = rect.size.width;
+    
     [self.contentView mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self).offset(padding);
-        make.right.equalTo(self).offset(-padding);
         make.top.equalTo(self.mas_bottom).offset(padding);
+        make.centerX.equalTo(self);
+        make.width.lessThanOrEqualTo(self).offset(-(padding * 2));
+        make.width.lessThanOrEqualTo(self.mas_height);
     }];
     
     [self layoutIfNeeded];
     
-    NSInteger bottomMargin = self.safeAreaInsets.bottom;
-    bottomMargin = bottomMargin > 0?:padding;
     [self.contentView mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self).offset(padding);
-        make.right.equalTo(self).offset(-padding);
-        make.bottom.equalTo(self).offset(-bottomMargin);
+        make.bottom.equalTo(self.mas_bottom).offset(-padding);
+        make.centerX.equalTo(self);
+        make.width.lessThanOrEqualTo(self).offset(-(padding * 2));
+        make.width.lessThanOrEqualTo(self.mas_height);
     }];
     
     [UIView animateWithDuration:.3
@@ -381,10 +390,12 @@ const NSTimeInterval MESSAGE_DELAY_INVERTAL = 1.5;
     [self.backgroundView hideAnimated:YES];
     
     NSInteger padding = 16;
+    
     [self.contentView mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self).offset(padding);
-        make.right.equalTo(self).offset(-padding);
-        make.top.equalTo(self.mas_bottom).offset(-16);
+        make.top.equalTo(self.mas_bottom).offset(padding);
+        make.centerX.equalTo(self);
+        make.width.lessThanOrEqualTo(self).offset(-(padding * 2));
+        make.width.lessThanOrEqualTo(self.mas_height);
     }];
     
     [UIView animateWithDuration:.3
