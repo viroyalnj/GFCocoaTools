@@ -145,8 +145,9 @@ const NSTimeInterval MESSAGE_DELAY_INVERTAL = 1.5;
         [self.toolBar mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self).offset(self.padding);
             make.right.equalTo(self).offset(-self.padding);
-            make.top.equalTo(self.labelView.mas_bottom).offset(self.padding);
+            make.top.equalTo(self.labelView.mas_bottom);
             make.height.equalTo(@(self.toolBarHeight));
+            make.bottom.equalTo(self);
         }];
     }
     
