@@ -125,7 +125,7 @@ const NSTimeInterval MESSAGE_DELAY_INVERTAL = 1.5;
         self.titleColor = [UIColor whiteColor];
         self.detailFont = [UIColor colorFromHex:0xd0d0d0];
         self.padding = 16;
-        self.toolBarHeight = 48;
+        self.toolBarHeight = 32;
         
         self.labelView = [UILabel new];
         self.labelView.numberOfLines = 100;
@@ -141,13 +141,16 @@ const NSTimeInterval MESSAGE_DELAY_INVERTAL = 1.5;
                       forToolbarPosition:UIBarPositionAny
                               barMetrics:UIBarMetricsDefault];
         
+        [self.toolBar setShadowImage:[UIImage new]
+                  forToolbarPosition:UIToolbarPositionAny];
+        
         [self addSubview:self.toolBar];
         [self.toolBar mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self).offset(self.padding);
             make.right.equalTo(self).offset(-self.padding);
-            make.top.equalTo(self.labelView.mas_bottom);
+            make.top.equalTo(self.labelView.mas_bottom).offset(self.padding);
             make.height.equalTo(@(self.toolBarHeight));
-            make.bottom.equalTo(self);
+            make.bottom.equalTo(self).offset(-self.padding);
         }];
     }
     
@@ -200,7 +203,7 @@ const NSTimeInterval MESSAGE_DELAY_INVERTAL = 1.5;
     height = self.padding + stringSize.height;
     
     if (self.actions.count) {
-        height += self.padding + self.toolBarHeight;
+        height += (self.padding + self.toolBarHeight);
     }
     
     height += self.padding;
@@ -242,9 +245,11 @@ const NSTimeInterval MESSAGE_DELAY_INVERTAL = 1.5;
 }
 
 - (void)setBounds:(CGRect)bounds {
-    if (self.preferredMaxLayoutWidth != CGRectGetWidth(bounds) - self.padding * 2) {
-        self.preferredMaxLayoutWidth = CGRectGetWidth(bounds) - self.padding * 2;
+    if (self.preferredMaxLayoutWidth != CGRectGetWidth(bounds)) {
+        self.preferredMaxLayoutWidth = CGRectGetWidth(bounds);
+        
         [self invalidateIntrinsicContentSize];
+        [self layoutSubviews];
     }
     
     [super setBounds:bounds];
