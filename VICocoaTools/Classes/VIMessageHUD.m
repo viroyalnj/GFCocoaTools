@@ -123,7 +123,7 @@ const NSTimeInterval MESSAGE_DELAY_INVERTAL = 1.5;
         self.titleFont = [UIFont boldSystemFontOfSize:17];
         self.detailFont = [UIFont systemFontOfSize:15];
         self.titleColor = [UIColor whiteColor];
-        self.detailFont = [UIColor colorFromHex:0xd0d0d0];
+        self.detailColor = [UIColor colorFromHex:0xd0d0d0];
         self.padding = 16;
         self.toolBarHeight = 32;
         
