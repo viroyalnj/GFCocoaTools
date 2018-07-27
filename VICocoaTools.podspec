@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'VICocoaTools'
-  s.version          = '0.2.1'
+  s.version          = '0.3'
   s.summary          = '自己使用的一个工具类.'
   s.module_name      = 'VICocoaTools'
 
@@ -27,7 +27,6 @@ Pod::Spec.new do |s|
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'guofengld' => 'guofengld@gmail.com' }
   s.source           = { :git => 'https://github.com/viroyalnj/VICocoaTools.git', :tag => s.version.to_s }
-# s.social_media_url = 'https://twitter.com/guofengjd'
 
   s.ios.deployment_target = '8.1'
   s.requires_arc = true
