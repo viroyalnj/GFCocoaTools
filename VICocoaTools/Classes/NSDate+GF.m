@@ -32,7 +32,7 @@
 
 - (NSDateComponents *)components {
     NSCalendar *calendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
-    NSCalendarUnit unit = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
+    NSCalendarUnit unit = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitWeekday | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
     return [calendar components:unit fromDate:self];
 }
 
@@ -50,6 +50,10 @@
 
 - (NSInteger)week {
     return [self components].weekOfYear;
+}
+
+- (NSInteger)weekDay {
+    return [self components].weekday;
 }
 
 - (NSInteger)hour {

@@ -7,6 +7,7 @@
 //
 
 #import "NSDateFormatter+GF.h"
+#import "NSDate+GF.h"
 
 @implementation NSDateFormatter (GF)
 
@@ -51,6 +52,27 @@
     else {
         return [NSString stringWithFormat:@"%ld:%ld:%ld", (long)hour, (long)min, (long)second];
     }
+}
+
+- (NSString *)smartDayTimeStringFromDate:(NSDate *)date {
+    NSDate *today = [NSDate date];
+    
+    if (date.day == today.day) {
+        // 同一天内
+        self.dateFormat = @"aa h:mm";
+        return [self stringFromDate:date];
+    }
+    else if (date.week == today.week) {
+        // 同一周内
+        NSCalendar *calendar = [NSCalendar currentCalendar];
+        NSInteger dayIndex = ((date.weekDay - 1) + (calendar.firstWeekday - 1)) % 7;
+        return calendar.weekdaySymbols[dayIndex];
+    }
+    else {
+        // 比较久远了
+    }
+    
+    return nil;
 }
 
 @end

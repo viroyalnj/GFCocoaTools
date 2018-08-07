@@ -27,7 +27,7 @@ const NSTimeInterval MESSAGE_DELAY_INVERTAL = 1.5;
 }
 
 - (instancetype)initWithTitle:(NSString *)title completion:(nullable VIMessageHUDCompletionBlock)completion {
-    if (self = [super init]) {
+    if (self = [self init]) {
         self.title = title;
         self.completion = completion;
     }

@@ -16,6 +16,7 @@
 #import "NSDateFormatter+GF.h"
 #import "NSString+GF.h"
 #import "UICollectionViewCell+GF.h"
+#import "UICollectionReusableView+VI.h"
 #import "UIImage+GF.h"
 #import "UIImageView+GF.h"
 #import "UIScreen+GF.h"

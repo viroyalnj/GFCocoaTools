@@ -20,4 +20,6 @@
 
 - (NSString *)clockTimeStringFromTimeInterval:(NSTimeInterval)interval;
 
+- (NSString *)smartDayTimeStringFromDate:(NSDate *)date;
+
 @end

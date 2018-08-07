@@ -21,6 +21,7 @@
 - (NSInteger)month;
 - (NSInteger)day;
 - (NSInteger)week;
+- (NSInteger)weekDay;
 
 - (NSInteger)hour;
 - (NSInteger)minute;

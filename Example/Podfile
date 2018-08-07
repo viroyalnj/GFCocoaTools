@@ -6,5 +6,6 @@ target 'VICocoaTools_Example' do
   
   pod 'VICocoaTools', :path => '../'
   pod 'GFPhotoBrowser'
+  pod 'Masonry'
   
 end

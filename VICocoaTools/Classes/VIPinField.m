@@ -82,7 +82,7 @@
 @implementation VIPinField
 
 - (instancetype)initWithFrame:(CGRect)frame digitCount:(NSInteger)digitCount {
-    if (self = [super initWithFrame:frame]) {
+    if (self = [self initWithFrame:frame]) {
         [self setupWithFrame:frame digitCount:digitCount];
     }
     
